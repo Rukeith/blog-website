@@ -7,8 +7,8 @@ import Header from './Header';
 import Footer from '../components/Footer';
 
 const styles = {
-  display: 'grid',
-  gridTemplateRows: '50px 1fr 300px',
+  display: 'flex',
+  flexDirection: 'column',
 };
 
 const App = ({ route, location }) => {
@@ -16,17 +16,15 @@ const App = ({ route, location }) => {
     <div style={styles}>
       <Header location={location} />
       {/* {renderRoutes(route.routes)} */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
 
 App.propTypes = {
   // auth: PropTypes.bool.isRequired,
-  location: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
-
-// const mapStateToProps = state => ({ auth: state.user.token !== '' });
 
 export default withRouter(connect()(App));

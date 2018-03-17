@@ -7,8 +7,10 @@ $nav-width: 85px;
 }
 
 header {
+  height: 50px;
   display: grid;
   font-size: 18px;
+  max-height: 50px;
   text-align: center;
   line-height: $header-height;
   background-color: #5DAC81;
