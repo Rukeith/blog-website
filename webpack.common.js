@@ -1,8 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: path.resolve(__dirname, 'client/index.js'),
@@ -11,7 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -26,23 +27,23 @@ module.exports = {
       //     emitWarning: true,
       //     failOnError: true,
       //     failOnWarning: true,
-      //   }
+      //   },
       // },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          cacheDirectory: true
-        }
+          cacheDirectory: true,
+        },
       },
       {
         test: /\.(scss|sass|css)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            { loader: 'css-loader', options: { sourceMap: true, minimize: true } },
-            // { loader: 'postcss-loader', options: { sourceMap: true } },
+            { loader: 'css-loader', options: { sourceMap: true, minimize: true, importLoaders: 1 } },
+            { loader: 'postcss-loader', options: { sourceMap: true } },
             { loader: 'sass-loader', options: { sourceMap: true } },
           ],
         }),
@@ -51,14 +52,20 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
-          limit: 8192
-        }
-      }
-    ]
+          limit: 8192,
+        },
+      },
+      {
+        test: /\.(ttf|eot|woff)/,
+        loader: 'file-loader',
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
     new ExtractTextPlugin({
       filename: '[hash].styles.css',
       disable: process.env.NODE_ENV !== 'production',
@@ -73,8 +80,17 @@ module.exports = {
       minify: {
         removeComments: process.env.NODE_ENV === 'production',
         collapseWhitespace: process.env.NODE_ENV === 'production',
-        preserveLineBreaks: process.env.NODE_ENV === 'production'
-      }
-    })
-  ]
+        preserveLineBreaks: process.env.NODE_ENV === 'production',
+      },
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      as(entry) {
+        if (/\.css$/.test(entry)) return 'style';
+        if (/\.woff$/.test(entry)) return 'font';
+        if (/\.png$/.test(entry)) return 'image';
+        return 'script';
+      },
+    }),
+  ],
 };

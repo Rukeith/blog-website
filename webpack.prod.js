@@ -10,10 +10,10 @@ module.exports = merge(common, {
         ecma: 8,
         output: {
           ecma: 7,
-          indent_level: 2
+          indent_level: 2,
         },
-        compress: { ecma: 7 }
-      }
-    })
+        compress: { ecma: 7 },
+      },
+    }),
   ],
 });
