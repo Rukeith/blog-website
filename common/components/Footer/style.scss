@@ -12,11 +12,8 @@ footer {
 
     .footer-social {
       grid-row-start: 2;
-      grid-row-end: 3;
-      margin-top: 16px;
 
       .footer-social-link {
-        
         width: 35px;
         height: 35px;
         cursor: pointer;
@@ -32,6 +29,7 @@ footer {
     }
 
     .footer-copyright {
+      font-size: 15px;
       grid-row-start: 3;
       line-height: 30px;
     }
@@ -47,30 +45,99 @@ footer {
 
     #footer-contact-me {
       display: grid;
+      min-width: 400px;
       grid-template-rows: 1fr 2fr 1fr;
 
       input, textarea {
-        font: inherit;
+        width: 100%;
         border: none;
         resize: none;
         outline: none;
-        width: 400px;
-        padding: 18px;
+        padding: 10px;
         margin: 5px 0;
         color:  #d1d2d2;
-        display: block;
-        font-size: 14px;
-        font-weight: normal;
-        border-radius: 3px;
+        border-radius: 7px;
         box-sizing: border-box;
         background-color: #1f2022;
+        font: {
+          size: 15px;
+          weight: normal;
+          family: inherit;
+        }
       }
     }
 
     button {
+      width: 100%;
       margin: 5px 0;
       font-size: 1.6em;
-      font-weight: 700;
+      font-weight: bold;
+      border-radius: 7px;
+    }
+  }
+}
+
+@media only screen and (max-width: 869px) {
+  footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+
+    .footer-left {
+      grid-row-start: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // grid-template-rows: repeat(2, 1fr);
+
+      .footer-social {
+        margin: 10px auto;
+      }
+
+      .footer-copyright {
+        margin: 10px auto;
+        font-size: 15px;
+        line-height: 10px;
+      }
+    }
+
+    .footer-right {
+      justify-content: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  footer {
+    grid-template-rows: 2fr 1fr;
+
+    .footer-left {
+      display: flex;
+      grid-row-start: 2;
+      flex-direction: column;
+      justify-content: center;
+
+      .footer-social {
+        margin: 10px auto;
+      }
+
+      .footer-copyright {
+        margin: 10px auto;
+        line-height: 10px;
+      }
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        margin: 15px auto;
+      }
+
+      #footer-contact-me {
+        min-width: 320px;
+      }
     }
   }
 }
