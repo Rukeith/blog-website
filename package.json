@@ -63,6 +63,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "animate.css": "^3.6.1",
     "axios": "^0.18.0",
     "history": "^4.7.2",
     "http-status": "^1.0.1",

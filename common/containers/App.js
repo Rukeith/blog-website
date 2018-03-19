@@ -15,7 +15,7 @@ const App = ({ route, location }) => {
   return (
     <div style={styles}>
       <Header location={location} />
-      {/* {renderRoutes(route.routes)} */}
+      {renderRoutes(route.routes)}
       <Footer />
     </div>
   );
