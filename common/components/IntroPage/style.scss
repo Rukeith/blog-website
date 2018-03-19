@@ -1,7 +1,8 @@
 #intro-page {
-  display: grid;
+  display: flex;
   text-align: center;
-  grid-template-rows: repeat(3, 1fr);
+  flex-direction: row;
+  // grid-template-rows: repeat(3, 1fr);
 
   .intro-page-avatar {
     background-color: cornsilk;
