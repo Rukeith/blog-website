@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import * as HeaderActions from '../actions/header';
 
 const mapStateToProps = state => ({
-  menuOpen: state.header,
+  menuOpen: state.header.menuOpen,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(HeaderActions, dispatch);

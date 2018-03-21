@@ -1,11 +1,15 @@
 import { MENU_CLICK, RESIZE } from '../actions/header';
 
-const header = (state = false, action) => {
+const initialState = {
+  menuOpen: false,
+};
+
+const header = (state = initialState, action) => {
   switch (action.type) {
     case MENU_CLICK:
-      return !state;
+      return Object.assign({}, state, { menuOpen: !state.menuOpen });
     case RESIZE:
-      return false;
+      return Object.assign({}, state, { menuOpen: false });
     default:
       return state;
   }
