@@ -12,7 +12,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
@@ -52,7 +52,8 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
-          limit: 8192,
+          limit: 1024 * 8,
+          outputPath: '/images',
         },
       },
       {
@@ -87,8 +88,8 @@ module.exports = {
       rel: 'preload',
       as(entry) {
         if (/\.css$/.test(entry)) return 'style';
-        if (/\.woff$/.test(entry)) return 'font';
-        if (/\.png$/.test(entry)) return 'image';
+        if (/\.(ttf|eot|woff)$/.test(entry)) return 'font';
+        if (/\.(png|jpg|gif|svg)$/.test(entry)) return 'image';
         return 'script';
       },
     }),
