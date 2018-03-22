@@ -22,7 +22,7 @@
     "@babel/preset-react": "^7.0.0-beta.42",
     "autoprefixer": "^8.2.0",
     "babel-loader": "8.0.0-beta.0",
-    "caniuse-lite": "^1.0.30000817",
+    "caniuse-lite": "^1.0.30000819",
     "clean-webpack-plugin": "^0.1.19",
     "colorguard": "^1.2.1",
     "css-loader": "^0.28.11",
