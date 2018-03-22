@@ -34,57 +34,30 @@ const socialLinkList = [
   },
 ];
 
-const Footer = () => (
-  <footer>
-    <div className="footer-left">
-      <div className="footer-social">
-        {
-          socialLinkList.map(data => (
-            <a className={`footer-social-link ${data.alt}`} href={data.link}>
-              <img alt={`${data.alt}-link`} src={data.icon} />
-            </a>
-          ))
-        }
-      </div>
-
-      <p className="footer-copyright">&copy; 2018 Rukeith.com All Rights Reserved</p>
+const IntroAvatar = () => (
+  <div className="intro-page-avatar">
+    <div className="avatar">
+      <img alt="avatar" src="https://firebasestorage.googleapis.com/v0/b/blog-5d8c6.appspot.com/o/system%2Fuser.svg?alt=media&token=df75b2b2-abfc-44b1-a29b-6a52c7a2c88d" />
     </div>
-    <div className="footer-right">
-      <h3>Contact Me</h3>
-
-      <form id="footer-contact-me" name="contact-me" target="_top" action="/contact" method="post">
-        <input
-          required
-          form="contact-me"
-          type="email"
-          name="email"
-          placeholder="Your email"
-          formMethod="post"
-          formEncType="application/x-www-form-urlencoded"
-          pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
-        />
-        <textarea
-          form="contact-me"
-          name="message"
-          rows="4"
-          cols="20"
-          wrap="hard"
-          maxLength="200"
-          placeholder="Typing message"
-        />
-        <button
-          form="contact-me"
-          type="submit"
-          name="contact-me-submit"
-          formTarget="_top"
-          formMethod="post"
-          formEncType="application/x-www-form-urlencoded"
-        >
-          Send to me
-        </button>
-      </form>
+    <div className="description">
+      <ul>
+        <li><h1>Rukeith Tseng</h1></li>
+        <li>Use JavaScript and Nodejs as profession for years,
+          keen to learn new technology. And quite requires my own coding style
+          and code quality with CI Test.
+        </li>
+      </ul>
     </div>
-  </footer>
+    <div className="social-link">
+      {
+        socialLinkList.map(data => (
+          <a className={`avatar-social-link ${data.alt}`} href={data.link}>
+            <img alt={`${data.alt}-link`} src={data.icon} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
 );
 
-export default Footer;
+export default IntroAvatar;
