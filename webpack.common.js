@@ -53,7 +53,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 1024 * 8,
-          outputPath: '/images',
+          // outputPath: '/images',
         },
       },
       {
