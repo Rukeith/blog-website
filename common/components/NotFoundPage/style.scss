@@ -1,14 +1,14 @@
 #not-found-page {
   min-height: 266px;
   text-align: center;
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // background-image: url('./background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('./background.jpg');
   // padding-bottom: 60%;
   // box-sizing: border-box;
-  // display: block;
-  // display: grid;
-  // grid-template-rows: repeat(5, 1fr) 2fr;
+  display: block;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr) 2fr;
 
   .not-found-page-text-block {
     grid-row-start: 2;
