@@ -13,7 +13,7 @@ const skills = [
   },
   {
     skill: 'Server',
-    details: 'AWS, GCP, Heroku',
+    details: 'AWS, GCP, Heroku, Parse, LeanCloud',
   },
   {
     skill: 'Database',
@@ -31,7 +31,7 @@ const skills = [
 
 const IntroSkill = () => (
   <div className="intro-page-skill">
-    { skills.map(value => <SkillBar skill={value.skill} details={value.details} />) }
+    { skills.map(value => <SkillBar skill={value.skill} details={value.details} key={value.skill.toLowerCase()} />) }
   </div>
 );
 

@@ -40,7 +40,7 @@ const Footer = () => (
       <div className="footer-social">
         {
           socialLinkList.map(data => (
-            <a className={`footer-social-link ${data.alt}`} href={data.link}>
+            <a className={`footer-social-link ${data.alt}`} href={data.link} key={data.alt}>
               <img alt={`${data.alt}-link`} src={data.icon} />
             </a>
           ))

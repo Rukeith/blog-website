@@ -51,7 +51,7 @@ const IntroAvatar = () => (
     <div className="social-link">
       {
         socialLinkList.map(data => (
-          <a className={`avatar-social-link ${data.alt}`} href={data.link}>
+          <a className={`avatar-social-link ${data.alt}`} href={data.link} key={data.alt}>
             <img alt={`${data.alt}-link`} src={data.icon} />
           </a>
         ))
