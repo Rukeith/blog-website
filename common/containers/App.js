@@ -6,14 +6,9 @@ import { renderRoutes } from 'react-router-config';
 import Header from './Header';
 import Footer from '../components/Footer';
 
-const styles = {
-  display: 'flex',
-  flexDirection: 'column',
-};
-
 const App = ({ route, location }) => {
   return (
-    <div style={styles}>
+    <div className="main">
       <Header location={location} />
       {renderRoutes(route.routes)}
       <Footer />
@@ -22,7 +17,6 @@ const App = ({ route, location }) => {
 };
 
 App.propTypes = {
-  // auth: PropTypes.bool.isRequired,
   route: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };

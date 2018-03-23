@@ -3,6 +3,8 @@ import './style.scss';
 
 const LoginPage = () => (
   <main id="login-page">
+    <h2>Admin Login</h2>
+    <p>Welcome to share your thought. Make a different.</p>
     <form id="login-form" name="login" target="_top" action="/login" method="post">
       <input
         required
