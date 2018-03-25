@@ -1,5 +1,6 @@
 import App from './containers/App';
 import IntroPage from './containers/IntroPage';
+import BlogPage from './containers/BlogPage';
 import LoginPage from './containers/LoginPage';
 import NotFoundPage from './containers/NotFoundPage';
 
@@ -11,6 +12,11 @@ const routes = [
         path: '/intro',
         exact: true,
         component: IntroPage,
+      },
+      {
+        path: '/',
+        exact: true,
+        component: BlogPage,
       },
       {
         path: '/login',
