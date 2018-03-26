@@ -11,7 +11,7 @@ const configureStore = (preloadedState) => {
   const store = createStore(
     rootReducer,
     preloadedState,
-    composeEnhancers(applyMiddleware([thunk, routerReducers])),
+    composeEnhancers(applyMiddleware(thunk, routerReducers)),
   );
 
   if (module.hot) {
