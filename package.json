@@ -72,7 +72,7 @@
     "kcors": "^2.2.1",
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
-    "koa-helmet": "^3.3.0",
+    "koa-helmet": "^4.0.0",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
     "koa-sslify": "^2.1.2",
