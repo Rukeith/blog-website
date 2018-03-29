@@ -1,7 +1,7 @@
 import 'animate.css';
 import axios from 'axios';
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
@@ -15,7 +15,7 @@ const preloadedState = window.PRELOADED_STATE;
 const store = configureStore(preloadedState);
 const supportsHistory = 'pushState' in window.history;
 
-render(
+hydrate(
   <Provider store={store}>
     <BrowserRouter forceRefresh={!supportsHistory}>
       {renderRoutes(routes)}

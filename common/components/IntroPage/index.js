@@ -1,6 +1,6 @@
 import React from 'react';
-import IntroAvatar from '../IntroAvatar';
-import IntroSkill from '../IntroSkill';
+import IntroAvatar from './IntroAvatar';
+import IntroSkill from './IntroSkill';
 import './style.scss';
 
 const IntroPage = () => (

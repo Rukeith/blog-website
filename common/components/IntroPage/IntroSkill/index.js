@@ -1,5 +1,5 @@
 import React from 'react';
-import SkillBar from '../SkillBar/';
+import SkillBar from './SkillBar/';
 import './style.scss';
 
 const skills = [

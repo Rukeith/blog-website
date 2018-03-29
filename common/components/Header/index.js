@@ -29,7 +29,7 @@ export default class Header extends React.Component {
         <div id="logo">{'Rukeith\'s blog'}</div>
         <SearchInput />
         <NavItem path="/intro" title="Intro" />
-        <NavItem path="/articles" title="Blog" />
+        <NavItem path="/" title="Blog" />
         {
           token && <NavItem path="/create" title="Creaete Article" />
         }
