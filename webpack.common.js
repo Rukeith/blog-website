@@ -5,7 +5,14 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'client/index.js'),
+  entry: {
+    vendor: [
+      'react',
+      'react-dom',
+      'redux',
+    ],
+    main: path.resolve(__dirname, 'client/index.js'),
+  },
   output: {
     filename: '[hash].bundle.js',
   },
@@ -62,6 +69,20 @@ module.exports = {
         loader: 'file-loader',
       },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'all',
+          test: /node_modules/, // you may add "vendor.js" here if you want to
+          name: 'vendor',
+        },
+      },
+    },
+    runtimeChunk: {
+      name: 'runtime',
+    },
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
