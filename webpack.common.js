@@ -1,15 +1,20 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'client/index.js'),
+  entry: {
+    vendor: [
+      'react',
+      'react-dom',
+      'redux',
+    ],
+    main: path.resolve(__dirname, 'client/index.js'),
+  },
   output: {
     filename: '[hash].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -30,6 +35,7 @@ module.exports = {
       //   },
       // },
       {
+        type: 'javascript/auto',
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
@@ -38,6 +44,7 @@ module.exports = {
         },
       },
       {
+        type: 'javascript/auto',
         test: /\.(scss|sass|css)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -49,6 +56,7 @@ module.exports = {
         }),
       },
       {
+        type: 'javascript/auto',
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
@@ -62,11 +70,22 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'all',
+          test: /node_modules/, // you may add "vendor.js" here if you want to
+          name: 'vendor',
+        },
+      },
+    },
+    runtimeChunk: {
+      name: 'runtime',
+    },
+  },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-    }),
     new ExtractTextPlugin({
       filename: '[hash].styles.css',
       disable: process.env.NODE_ENV !== 'production',

@@ -9,7 +9,7 @@
   "repository": "https://rukeith@github.com/Rukeith/blog-website.git",
   "author": "Rukeith <fenglan.crazydance@gmail.com>",
   "engines": {
-    "node": ">=9.7.1"
+    "node": ">=9.6.1"
   },
   "browserslist": [
     "> 5%",
@@ -28,13 +28,13 @@
     "css-loader": "^0.28.11",
     "css-mqpacker": "^6.0.2",
     "cssnano": "^4.0.0-rc.2",
-    "eslint": "^4.19.1",
+    "eslint": "^5.0.0-alpha.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.1.0",
     "immutable-css": "^1.1.2",
@@ -50,16 +50,16 @@
     "postcss-pxtorem": "^4.0.1",
     "postcss-safe-parser": "^3.0.1",
     "postcss-write-svg": "^3.0.1",
-    "preload-webpack-plugin": "^2.3.0",
+    "preload-webpack-plugin": "^3.0.0-alpha.1",
     "rucksack-css": "^1.0.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "stylefmt": "^6.0.0",
-    "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "^1.0.1",
-    "webpack": "^3.11.0",
+    "webpack": "^4.4.1",
     "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-dev-server": "^2.11.1",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1",
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
