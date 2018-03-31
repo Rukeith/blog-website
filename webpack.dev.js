@@ -17,7 +17,7 @@ module.exports = merge(common, {
   devServer: {
     hot: true, // enable HMR on the server
     port: 8080,
-    compress: true,
+    compress: true, // server respond client with gzip
     contentBase: path.join(__dirname, 'dist'), // Tell the server where to serve content from
     historyApiFallback: true, // respond to 404s with index.html
   },

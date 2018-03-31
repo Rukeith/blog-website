@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -41,8 +42,8 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            { loader: 'css-loader', options: { sourceMap: true, minimize: true } },
-            // { loader: 'postcss-loader', options: { sourceMap: true } },
+            { loader: 'css-loader', options: { sourceMap: true, minimize: true, importLoaders: 1 } },
+            { loader: 'postcss-loader', options: { sourceMap: true } },
             { loader: 'sass-loader', options: { sourceMap: true } },
           ],
         }),
@@ -52,8 +53,13 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader',
         options: {
-          limit: 8192,
+          limit: 1024 * 5,
+          outputPath: '/images',
         },
+      },
+      {
+        test: /\.(ttf|eot|woff)/,
+        loader: 'file-loader',
       },
     ],
   },
@@ -76,14 +82,14 @@ module.exports = {
         preserveLineBreaks: process.env.NODE_ENV === 'production',
       },
     }),
-    // new PreloadWebpackPlugin({
-    //   rel: 'preload',
-    //   as(entry) {
-    //     if (/\.css$/.test(entry)) return 'style';
-    //     if (/\.woff$/.test(entry)) return 'font';
-    //     if (/\.png$/.test(entry)) return 'image';
-    //     return 'script';
-    //   },
-    // }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      as(entry) {
+        if (/\.css$/.test(entry)) return 'style';
+        if (/\.(ttf|eot|woff)$/.test(entry)) return 'font';
+        if (/\.(png|jpg|gif|svg)$/.test(entry)) return 'image';
+        return 'script';
+      },
+    }),
   ],
 };

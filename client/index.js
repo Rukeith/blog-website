@@ -1,27 +1,24 @@
+import 'animate.css';
+import axios from 'axios';
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import App from '../common/containers/App';
-import Nav from '../common/containers/Nav';
-import Board from '../common/containers/Board';
-import Counter from '../common/containers/Counter';
+import { BrowserRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import './index.css';
+import routes from '../common/routes';
 import configureStore from '../common/store/configureStore';
-import '../common/assets/index.css';
 
+axios.defaults.baseURL = process.env.SERVER_URL;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 const preloadedState = window.PRELOADED_STATE;
 const store = configureStore(preloadedState);
 const supportsHistory = 'pushState' in window.history;
 
-render(
+hydrate(
   <Provider store={store}>
     <BrowserRouter forceRefresh={!supportsHistory}>
-      <Switch>
-        <Route exact path="/" component={Nav} />
-        <Route path="/about" component={Board} />
-        <Route path="/:user" component={App} />
-        <Route component={Counter} />
-      </Switch>
+      {renderRoutes(routes)}
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),
