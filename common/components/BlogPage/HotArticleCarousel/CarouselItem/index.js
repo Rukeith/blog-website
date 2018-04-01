@@ -10,7 +10,12 @@ const CarouselItem = ({
 }) => (
   <div className="carousel-item">
     {
-      coverImage && <img className="carousel-content-cover-image" alt="hot-article-coverImage" src={coverImage} />
+      (() => {
+        if (coverImage) {
+          return <img className="carousel-hot-article-coverImage" alt="hot-article-coverImage" src={coverImage} />;
+        }
+        return <div className="carousel-content-mask" />;
+      })()
     }
     <h3>{title}</h3>
     <div className="carousel-item-mask">

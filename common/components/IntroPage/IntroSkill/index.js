@@ -31,7 +31,15 @@ const skills = [
 
 const IntroSkill = () => (
   <div className="intro-page-skill">
-    { skills.map(value => <SkillBar skill={value.skill} details={value.details} key={value.skill.toLowerCase()} />) }
+    {
+      skills.map(value => (
+        <SkillBar
+          skill={value.skill}
+          details={value.details}
+          key={value.skill.toLowerCase()}
+        />
+      ))
+    }
   </div>
 );
 

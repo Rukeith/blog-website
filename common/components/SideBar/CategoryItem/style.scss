@@ -1,0 +1,51 @@
+$icon-width: 20px;
+$icon-height: $icon-width + 2px;
+
+.category-item-label {
+  cursor: pointer;
+  display: flex;
+  padding: 3px 0;
+  flex-wrap: wrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: $icon-width;
+  line-height: $icon-width;
+
+  & > input,
+  & > .category-article-list {
+    display: none;
+  }
+
+  & > input:checked ~ .category-article-list {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: .9rem;
+    padding-left: 10px;
+    text-overflow: ellipsis;
+    animation: .7s slideInLeft ease-out;
+  }
+
+  & > input:checked ~ .fa {
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/blog-5d8c6.appspot.com/o/font-awesome%2Fminus-square.svg?alt=media&token=05fa34ee-264f-4658-ac7b-177410538a53');
+  }
+}
+
+.category-month {
+  margin-left: 5px;
+  width: calc(100% - 25px);
+}
+
+.category-article-title {
+  width: 100%;
+}
+
+.fa {
+  order: -1;
+  content: "";
+  width: $icon-width;
+  height: $icon-height;
+  display: inline-block;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/blog-5d8c6.appspot.com/o/font-awesome%2Fplus-square.svg?alt=media&token=bc140831-09f3-4872-9a4b-d94bd6b0f5a1');
+}

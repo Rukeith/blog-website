@@ -35,7 +35,7 @@ const socialLinkList = [
 ];
 
 const SocialBar = () => (
-  <div className="social-bar">
+  <section className="social-bar">
     {
       socialLinkList.map(data => (
         <a className={`social-link ${data.alt}`} href={data.link} key={data.alt}>
@@ -43,7 +43,7 @@ const SocialBar = () => (
         </a>
       ))
     }
-  </div>
+  </section>
 );
 
 export default SocialBar;

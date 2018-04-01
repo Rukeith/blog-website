@@ -7,9 +7,14 @@
   text-overflow: ellipsis;
   max-width: calc(100% / 3);
 
-  .carousel-content-cover-image {
+  .carousel-hot-article-coverImage {
     width: 100%;
     height: auto;
+  }
+
+  .carousel-content-mask {
+    height: 100%;
+    background-color: bisque;
   }
 
   h3 {
@@ -44,6 +49,7 @@
   }
 
   a {
+    color: white;
     text-decoration-line: none;
   }
 }
