@@ -14,7 +14,7 @@ module.exports = {
     main: path.resolve(__dirname, 'client/index.js'),
   },
   output: {
-    filename: '[hash].bundle.js',
+    filename: '[hash].[name].bundle.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
