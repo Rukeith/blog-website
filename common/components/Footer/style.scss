@@ -10,25 +10,6 @@ footer {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
 
-    .footer-social {
-      grid-row-start: 2;
-
-      .footer-social-link {
-        width: 35px;
-        height: 35px;
-        cursor: pointer;
-        margin-right: 3px;
-        margin-bottom: 5px;
-        display: inline-block;
-        animation: 1.5s bounceIn ease-out;
-
-        img {
-          width: 35px;
-          height: 35px;
-        }
-      }
-    }
-
     .footer-copyright {
       font-size: 15px;
       grid-row-start: 3;
@@ -92,7 +73,7 @@ footer {
       flex-direction: column;
       justify-content: center;
 
-      .footer-social {
+      .social-bar {
         margin: 10px auto;
       }
 
@@ -119,7 +100,7 @@ footer {
       flex-direction: column;
       justify-content: center;
 
-      .footer-social {
+      .social-bar {
         margin: 10px auto;
       }
 

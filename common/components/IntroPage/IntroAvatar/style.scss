@@ -5,6 +5,8 @@
 
   .avatar {
     margin: 15px 0 0;
+    animation: .5s zoomIn ease-out;
+
     img {
       width: 150px;
       height: 150px;
@@ -13,6 +15,7 @@
 
   .description {
     font-family: monospace;
+    margin-bottom: 10px;
 
     ul {
       padding: 0;
@@ -21,25 +24,6 @@
 
       li {
         list-style-type: none;
-      }
-    }
-  }
-
-  .social-link {
-    margin: 15px 0;
-
-    .avatar-social-link {
-      width: 35px;
-      height: 35px;
-      cursor: pointer;
-      margin-right: 3px;
-      margin-bottom: 5px;
-      display: inline-block;
-      animation: 1.5s bounceIn ease-out;
-
-      img {
-        width: 35px;
-        height: 35px;
       }
     }
   }
