@@ -23,7 +23,7 @@
     "@babel/preset-react": "^7.0.0-beta.44",
     "autoprefixer": "^8.2.0",
     "babel-loader": "8.0.0-beta.0",
-    "caniuse-lite": "^1.0.30000823",
+    "caniuse-lite": "^1.0.30000824",
     "clean-webpack-plugin": "^0.1.19",
     "colorguard": "^1.2.1",
     "css-loader": "^0.28.11",
@@ -57,10 +57,10 @@
     "style-loader": "^0.20.3",
     "stylefmt": "^6.0.0",
     "url-loader": "^1.0.1",
-    "webpack": "^4.4.1",
+    "webpack": "^4.5.0",
     "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-cli": "^2.0.13",
-    "webpack-dev-server": "^3.1.1",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3",
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
