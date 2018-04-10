@@ -1,25 +1,17 @@
-import 'animate.css';
-import axios from 'axios';
-import React from 'react';
-import { hydrate } from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-import routes from '../common/routes';
-import configureStore from '../common/store/configureStore';
-import './index.css';
+import 'babel-polyfill'
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import configureStore from '../common/store/configureStore'
+import App from '../common/containers/App'
 
-axios.defaults.baseURL = process.env.SERVER_URL;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-const preloadedState = window.PRELOADED_STATE;
-const store = configureStore(preloadedState);
-const supportsHistory = 'pushState' in window.history;
+const preloadedState = window.__PRELOADED_STATE__
+const store = configureStore(preloadedState)
+const rootElement = document.getElementById('app')
 
-hydrate(
+render(
   <Provider store={store}>
-    <BrowserRouter forceRefresh={!supportsHistory}>
-      {renderRoutes(routes)}
-    </BrowserRouter>
+    <App/>
   </Provider>,
-  document.getElementById('root'),
-);
+  rootElement
+)
