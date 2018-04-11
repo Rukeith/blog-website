@@ -5,7 +5,7 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development',
   devtool: 'inline-source-map',
   entry: [
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?reload=true',
     './client/index.js'
   ],
   output: {
@@ -23,9 +23,6 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         include: __dirname,
-        options: {
-          presets: [ 'react-hmre' ]
-        }
       }
     ]
   }

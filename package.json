@@ -1,40 +1,40 @@
 {
-  "name": "universal",
-  "version": "0.0.1",
-  "private": true,
+  "name": "blog-website",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js",
     "build": "webpack"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/reactjs/redux.git"
+  "repository": "https://rukeith@github.com/Rukeith/blog-website.git",
+  "author": "Rukeith <fenglan.crazydance@gmail.com>",
+  "engines": {
+    "node": ">=9.6.1"
   },
+  "browserslist": [
+    "> 5%",
+    "last 2 versions"
+  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/reactjs/redux/issues"
-  },
-  "homepage": "http://redux.js.org",
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "babel-register": "^6.26.0",
+    "@babel/polyfill": "^7.0.0-beta.44",
+    "@babel/register": "^7.0.0-beta.44",
     "express": "^4.16.3",
     "prop-types": "^15.6.1",
     "qs": "^6.5.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",
-    "redux": "^3.2.1",
+    "redux": "^4.0.0-rc.1",
     "redux-thunk": "^2.2.0",
     "serve-static": "^1.13.2"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-es2015": "^6.24.0",
-    "babel-preset-react": "^6.3.13",
-    "babel-preset-react-hmre": "^1.1.1",
-    "babel-runtime": "^6.26.0",
+    "@babel/core": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/preset-react": "^7.0.0-beta.44",
+    "babel-loader": "^8.0.0-beta.2",
+    "nodemon": "^1.17.3",
     "webpack": "^4.5.0",
     "webpack-dev-middleware": "^3.1.2",
     "webpack-hot-middleware": "^2.22.0"
