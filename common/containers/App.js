@@ -1,14 +1,22 @@
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import Counter from '../components/Counter'
-import * as CounterActions from '../actions'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import Header from './Header';
 
-const mapStateToProps = (state) => ({
-  counter: state.counter
-})
+const App = ({ route, location }) => {
+  return (
+    <div className="main">
+      <Header location={location} />
+      {renderRoutes(route.routes)}
+    </div>
+  );
+};
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(CounterActions, dispatch)
-}
+App.propTypes = {
+  route: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default withRouter(connect()(App));
