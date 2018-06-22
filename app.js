@@ -4,5 +4,11 @@ require('@babel/register')({
     '@babel/preset-react',
   ],
 });
+require.extensions['.css'] = () => {
+  return true;
+};
+require.extensions['.scss'] = () => {
+  return true;
+};
 require('@babel/polyfill');
 require('./server/index.js');

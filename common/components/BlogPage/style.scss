@@ -1,5 +1,8 @@
 #blog-page {
   height: 100%;
+  // display: grid;
+  // grid-template-columns: 1fr 260px;
+  // grid-template-rows: 284px  auto;
   display: flex;
   flex-wrap: wrap;
 }

@@ -36,12 +36,11 @@ app
   .use(router.routes())
   .use(router.allowedMethods({ throw: true }));
 
-router.get('*', async (ctx, next) => {
+router.get('*', async (ctx) => {
   const context = {};
-  const content = renderToString(<StaticRouter location={ctx.url} context={context}> {renderRoutes(routes)} </StaticRouter>);
+  const content = renderToString(<StaticRouter location={ctx.request.url} context={context}> {renderRoutes(routes)} </StaticRouter>);
 
-  ctx.render('index', { content });
-  await next();
+  await ctx.render('index', { content });
 });
 
 app.on('error', (err, ctx) => {
