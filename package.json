@@ -19,10 +19,19 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.3",
+    "http-status": "^1.2.0",
     "isomorphic-unfetch": "^2.0.0",
+<<<<<<< Updated upstream
+=======
+    "koa": "^2.5.1",
+    "koa-router": "^8.0.0-alpha.1",
+>>>>>>> Stashed changes
     "next": "^6.1.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-markdown": "^3.3.4"
+    "react-markdown": "^3.3.4",
+    "react-redux": "^5.1.0-test.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   }
 }
