@@ -1,31 +1,12 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import { withRouter } from 'next/router';
-import {startClock, serverRenderClock} from '../store'
-import Examples from '../components/examples'
+import React from 'react';
+import Link from 'next/link';
+import '../styles/style.scss';
 
-class Index extends React.Component {
-  static getInitialProps ({ reduxStore, req }) {
-    const isServer = !!req
-    reduxStore.dispatch(serverRenderClock(isServer))
-
-    return {}
-  }
-
-  componentDidMount () {
-    const {dispatch} = this.props
-    this.timer = startClock(dispatch)
-  }
-
-  componentWillUnmount () {
-    clearInterval(this.timer)
-  }
-
-  render () {
-    return (
-      <Examples />
-    )
-  }
-}
-
-export default withRouter(connect()(Index));
+export default () => (
+  <div className='example'>
+    <ul>
+      <li><Link href='/b' as='/a'><a>a</a></Link></li>
+      <li><Link href='/a' as='/b'><a>b</a></Link></li>
+    </ul>
+  </div>
+)

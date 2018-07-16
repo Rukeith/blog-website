@@ -34,8 +34,4 @@ app.prepare()
 
   server.use(router.routes());
   server.listen(port, () => console.log(`> Ready on http://localhost:${port}`));
-})
-.catch((ex) => {
-  console.error(ex.stack);
-  process.exit(1);
 });

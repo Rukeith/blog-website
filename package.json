@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "build": "next build",
-    "dev": "node server.js",
-    "start": "next start"
+    "dev": "nodemon index.js",
+    "start": "NODE_ENV=production next start"
   },
   "repository": "https://rukeith@github.com/Rukeith/blog-website.git",
   "author": "Rukeith <fenglan.crazydance@gmail.com>",
@@ -18,20 +18,15 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3",
-    "http-status": "^1.2.0",
-    "isomorphic-unfetch": "^2.0.0",
-<<<<<<< Updated upstream
-=======
-    "koa": "^2.5.1",
-    "koa-router": "^8.0.0-alpha.1",
->>>>>>> Stashed changes
+    "@zeit/next-sass": "^0.2.0",
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
     "next": "^6.1.1",
+    "node-sass": "^4.9.2",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-markdown": "^3.3.4",
-    "react-redux": "^5.1.0-test.1",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.2"
   }
 }
