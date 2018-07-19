@@ -7,18 +7,17 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-app.prepare()
-.then(() => {
+app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
-  router.get('/a', async ctx => {
-    await app.render(ctx.req, ctx.res, '/b', ctx.query);
+  router.get('/intro', async ctx => {
+    await app.render(ctx.req, ctx.res, '/intro', ctx.query);
     ctx.respond = false;
   });
 
-  router.get('/b', async ctx => {
-    await app.render(ctx.req, ctx.res, '/a', ctx.query);
+  router.get('/p/:id', async ctx => {
+    await app.render(ctx.req, ctx.res, '/post', { id: ctx.params.id });
     ctx.respond = false;
   });
 
@@ -32,6 +31,6 @@ app.prepare()
     await next();
   });
 
-  server.use(router.routes());
-  server.listen(port, () => console.log(`> Ready on http://localhost:${port}`));
+  server.use(router.routes())
+  server.listen(port, () => console.info(`> Ready on http://localhost:${port}`));
 });
