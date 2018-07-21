@@ -1,0 +1,30 @@
+.intro-page-avatar {
+  width: 100%;
+  min-height: 300px;
+  background-color: cornsilk;
+
+  .avatar {
+    margin: 15px 0 0;
+    animation: .5s zoomIn ease-out;
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .description {
+    font-family: monospace;
+    margin-bottom: 10px;
+
+    ul {
+      padding: 0;
+      width: 400px;
+      margin: 0 auto;
+
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+}
