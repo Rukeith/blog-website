@@ -1,0 +1,41 @@
+header .header-search-input {
+  margin: 0 30px;
+  animation: 1.5s fadeIn ease;
+
+  #header-search {
+    width: 100%;
+    cursor: text;
+    font: inherit;
+    outline: none;
+    display: block;
+    line-height: 40px;
+    color: currentColor;
+    border-style: solid;
+    border-color: black;
+    border-width: 0 0 2px 0;
+    box-sizing: content-box;
+    background: transparent;
+
+    &::placeholder {
+      color: #787878;
+    }
+  }
+}
+
+.menu-open .header-search-input {
+  display: none;
+}
+
+@media only screen and (min-width: 680px) {
+  header {
+    .header-search-input {
+      display: inline;
+    }
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  header .header-search-input {
+    margin: 0 10px;
+  }
+}

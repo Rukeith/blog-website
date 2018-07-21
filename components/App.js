@@ -1,27 +1,22 @@
 import React from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
+import Header from './Header';
+import Footer from './Footer';
 
 export default ({ children, title = 'This is the default title' }) => (
-  <div>
+  <div className="main">
     <Head>
-      <title>{ title }</title>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>
+        { title }
+      </title>
+      <meta charSet="utf-8" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     </Head>
-    <header>
-      <nav>
-        <Link href='/'><a>Home</a></Link> |
-        <Link href='/about'><a>About</a></Link> |
-        <Link href='/contact'><a>Contact</a></Link>
-      </nav>
-    </header>
+    <Header />
 
     { children }
 
-    <footer>
-      {'I`m here to stay'}
-    </footer>
+    <Footer />
   </div>
-)
+);
