@@ -2,14 +2,16 @@ import React from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 import Header from '../components/Header';
+import '../static/styles.scss';
 
 const Index = (props) => (
-  <div>
+  <div className="example">
     <Header />
-    <Link prefetch href="/intro?title=kk" pathname="/intro">
+    <Link prefetch href="/intro?title=kk">
       <button>Intro Page</button>
     </Link>
     <p>Hello Next.js</p>
+    <img src="/static/next.png" alt="nextjs logo" />
     <ul>
       {props.shows.map(({ show }) => (
         <li key={show.id}>
