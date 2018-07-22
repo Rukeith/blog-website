@@ -1,5 +1,5 @@
 import React from 'react';
-import MyApp from '../components/BlogPage';
+import MyApp from '../components/LoginPage';
 import '../static/styles.scss';
 import '../static/animate.min.scss';
 
