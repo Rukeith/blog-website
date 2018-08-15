@@ -1,0 +1,22 @@
+version: "3.5"
+services:
+  website:
+    build: ./
+    image: blog-website
+    container_name: blog-website
+    labels:
+      - "PROJECT=blog"
+      - "STATUS=docker"
+    networks:
+      - blog-network
+    ports:
+      - "3000:3000"
+    environment:
+      - API_ENTRY=https://www.example.com
+
+networks:
+  blog-network:
+    labels:
+      - "PROJECT=blog"
+      - "STATUS=docker"
+    name: blog-network
