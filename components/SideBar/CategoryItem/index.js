@@ -12,7 +12,7 @@ const CategoryItem = ({ items = [], month, labelId }) => (
     <span className="fa" />
     <div className="category-article-list">
       {items.map(title => (
-        <span className="category-article-title" title={title}>
+        <span className="category-article-title" title={title} key={title}>
           {title}
         </span>
       ))}
@@ -25,9 +25,9 @@ CategoryItem.defaultProps = {
 };
 
 CategoryItem.propTypes = {
-  labelId: PropTypes.string.isRequired,
-  month: PropTypes.number.isRequired,
   items: PropTypes.array,
+  month: PropTypes.number.isRequired,
+  labelId: PropTypes.string.isRequired,
 };
 
 export default CategoryItem;

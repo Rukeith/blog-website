@@ -1,10 +1,8 @@
 import React from 'react';
 import './style.scss';
 
-const ArticleArea = () => (
+export default () => (
   <section id="article-area">
     Article Area
   </section>
 );
-
-export default ArticleArea;
