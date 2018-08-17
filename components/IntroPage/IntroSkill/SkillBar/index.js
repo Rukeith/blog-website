@@ -20,8 +20,8 @@ const SkillBar = ({ skill, details }) => (
 );
 
 SkillBar.propTypes = {
-  details: PropTypes.string.isRequired,
   skill: PropTypes.string.isRequired,
+  details: PropTypes.string.isRequired,
 };
 
 export default SkillBar;

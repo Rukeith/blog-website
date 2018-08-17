@@ -29,7 +29,7 @@ const skills = [
   },
 ];
 
-const IntroSkill = () => (
+export default () => (
   <div className="intro-page-skill">
     {
       skills.map(value => (
@@ -42,5 +42,3 @@ const IntroSkill = () => (
     }
   </div>
 );
-
-export default IntroSkill;

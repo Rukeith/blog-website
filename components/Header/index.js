@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import NavItem from '../NavItem';
 import SearchInput from '../SearchInput';
 import './style.scss';
 
-export default class Header extends React.Component {
+class Header extends Component {
   componentDidMount() {
     const { resize } = this.props;
     if (window) window.addEventListener('resize', () => resize());
@@ -32,12 +32,8 @@ export default class Header extends React.Component {
         <SearchInput />
         <NavItem path="/intro" title="Intro" />
         <NavItem path="/" title="Blog" />
-        {
-          token && <NavItem path="/create" title="Creaete Article" />
-        }
-        {
-          token ? (<NavItem path="/logout" title="Logout" />) : (<NavItem path="/login" title="Login" />)
-        }
+        { token && <NavItem path="/create" title="Creaete Article" /> }
+        { token ? (<NavItem path="/logout" title="Logout" />) : (<NavItem path="/login" title="Login" />) }
       </header>
     );
   }
@@ -54,3 +50,5 @@ Header.propTypes = {
   resize: PropTypes.func.isRequired,
   menuClick: PropTypes.func.isRequired,
 };
+
+export default Header;

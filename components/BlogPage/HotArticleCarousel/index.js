@@ -26,7 +26,7 @@ const items = [
   },
 ];
 
-const HotArticleCarousel = () => (
+export default () => (
   <section id="hot-article-carousel">
     {
       items.map(item => (
@@ -41,5 +41,3 @@ const HotArticleCarousel = () => (
     }
   </section>
 );
-
-export default HotArticleCarousel;

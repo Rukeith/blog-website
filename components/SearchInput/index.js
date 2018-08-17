@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-const SearchInput = () => (
+export default () => (
   <div className="header-search-input">
     <input
       id="header-search"
@@ -12,5 +12,3 @@ const SearchInput = () => (
     />
   </div>
 );
-
-export default SearchInput;

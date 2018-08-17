@@ -2,7 +2,7 @@ import React from 'react';
 import SocialBar from '../SocialBar';
 import './style.scss';
 
-const Footer = () => (
+export default () => (
   <footer>
     <div className="footer-left">
       <SocialBar />
@@ -48,5 +48,3 @@ const Footer = () => (
     </div>
   </footer>
 );
-
-export default Footer;

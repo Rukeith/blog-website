@@ -2,27 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
+const checkContentImage = coverImage => (
+  coverImage
+    ? <img className="carousel-hot-article-coverImage" alt="hot-article-coverImage" src={coverImage} />
+    : <div className="carousel-content-mask" />
+);
+
 const CarouselItem = ({
-  title,
   url,
+  title,
   content,
   coverImage = '',
 }) => (
   <div className="carousel-item">
-    {
-      (() => {
-        if (coverImage) {
-          return <img className="carousel-hot-article-coverImage" alt="hot-article-coverImage" src={coverImage} />;
-        }
-        return <div className="carousel-content-mask" />;
-      })()
-    }
+    { checkContentImage(coverImage) }
     <h3>
-      {title}
+      { title }
     </h3>
     <div className="carousel-item-mask">
       <a href={url} target="_blank" rel="noopener noreferrer">
-        {content}
+        { content }
       </a>
     </div>
   </div>
@@ -33,10 +32,10 @@ CarouselItem.defaultProps = {
 };
 
 CarouselItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
   coverImage: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
 };
 
 export default CarouselItem;

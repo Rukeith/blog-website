@@ -34,7 +34,7 @@ const socialLinkList = [
   },
 ];
 
-const SocialBar = () => (
+export default () => (
   <section className="social-bar">
     {
       socialLinkList.map(data => (
@@ -45,5 +45,3 @@ const SocialBar = () => (
     }
   </section>
 );
-
-export default SocialBar;
