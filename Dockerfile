@@ -1,4 +1,4 @@
 FROM node
-ADD . .
+COPY . .
 RUN yarn && yarn build
-CMD yarn start
+CMD yarn ${START_COMMAND}
