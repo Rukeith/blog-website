@@ -27,7 +27,9 @@ class Header extends Component {
           <span className="hamburger-bottom" />
         </div>
         <div id="logo">
-          {'Rukeith\'s blog'}
+          <a href="/">
+            {'Rukeith\'s blog'}
+          </a>
         </div>
         <SearchInput />
         <NavItem path="/intro" title="Intro" />

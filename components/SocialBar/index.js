@@ -38,7 +38,7 @@ export default () => (
   <section className="social-bar">
     {
       socialLinkList.map(data => (
-        <a className={`social-link ${data.alt}`} href={data.link} key={data.alt}>
+        <a className={`social-link ${data.alt}`} href={data.link} key={data.alt} target="_blank" rel="noopener noreferrer">
           <img alt={`${data.alt}-link`} src={data.icon} />
         </a>
       ))

@@ -5,14 +5,14 @@ import './style.scss';
 const skills = [
   {
     skill: 'Programming',
-    details: 'JavaScript, Nodejs, Python, Golang',
+    details: 'JavaScript, Nodejs, Python3, Golang',
   },
   {
     skill: 'Front End',
-    details: 'jQuery, React, AngularJS',
+    details: 'HTML, CSS, Sass, Pug, jQuery, React, AngularJS',
   },
   {
-    skill: 'Server',
+    skill: 'Platform',
     details: 'AWS, GCP, Heroku, Parse, LeanCloud',
   },
   {
@@ -21,7 +21,7 @@ const skills = [
   },
   {
     skill: 'DevOps',
-    details: 'Jenkins, Gitlab CI, Bitbucket pipeline, Docker',
+    details: 'Jenkins, Gitlab CI, Bitbucket pipeline, Docker, Kubernetes',
   },
   {
     skill: 'Marketing',
