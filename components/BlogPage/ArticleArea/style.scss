@@ -1,3 +1,6 @@
 #article-area {
-  flex-grow: 1;
+  padding: 30px;
+  box-sizing: border-box;
+  width: calc(100% - 260px);
+  align-content: space-between;
 }
