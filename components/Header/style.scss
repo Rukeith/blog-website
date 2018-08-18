@@ -1,5 +1,5 @@
-$header-height: 50px;
 $nav-width: 85px;
+$header-height: 50px;
 
 @font-face {
   font-family: headerLogo;
@@ -36,11 +36,16 @@ header {
   }
 
   #logo {
-    color: #6F3381;
     min-width: 120px;
     margin-left: 10px;
     font-family: headerLogo;
     animation: 1.5s zoomIn ease;
+
+    a {
+      outline: none;
+      color: #6F3381;
+      text-decoration: none;
+    }
   }
 }
 

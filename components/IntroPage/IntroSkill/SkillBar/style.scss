@@ -1,7 +1,8 @@
 .skill-bar {
+  margin: 0;
   padding: 15px;
   font: inherit;
-  margin: 0 auto;
+  min-height: 136px;
 
   progress {
     width: 15em;

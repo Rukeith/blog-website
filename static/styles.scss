@@ -1,15 +1,16 @@
-html {
+%all-page {
   height: 100%;
+}
+
+html,
+#root {
+  @extend %all-page;
 }
 
 body {
   margin: 0;
-  height: 100%;
+  @extend %all-page;
   font-family: monospace;
-}
-
-#root {
-  height: 100%;
 }
 
 main {
@@ -26,3 +27,12 @@ main {
     height: auto;
   }
 }
+
+// <style jsx>
+// {`
+//   #__next,
+//   .main {
+//     height: 100%;
+//   }
+// `}
+// </style>

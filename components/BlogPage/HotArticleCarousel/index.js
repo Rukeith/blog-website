@@ -21,7 +21,7 @@ const items = [
     articleId: 3,
     title: 'This is title 3',
     url: 'https://www.google.com',
-    coverImage: 'http://example.png 3',
+    coverImage: 'https://react-etc.net/files/2018-01/next-nuxt.png',
     content: 'This is content 3',
   },
 ];
