@@ -4,7 +4,7 @@ import './style.scss';
 
 const checkContentImage = coverImage => (
   coverImage
-    ? <img className="carousel-hot-article-coverImage" alt="hot-article-coverImage" src={coverImage} />
+    ? <img className="carousel-hot-article-coverImage" alt="Hot Article CoverImage" src={coverImage} />
     : <div className="carousel-content-mask" />
 );
 
