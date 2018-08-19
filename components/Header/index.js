@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import NavItem from '../NavItem';
 import SearchInput from '../SearchInput';
@@ -27,9 +28,9 @@ class Header extends Component {
           <span className="hamburger-bottom" />
         </div>
         <div id="logo">
-          <a href="/">
-            {'Rukeith\'s blog'}
-          </a>
+          <Link prefetch href="/">
+            <a href="/">{'Rukeith\'s blog'}</a>
+          </Link>
         </div>
         <SearchInput />
         <NavItem path="/intro" title="Intro" />

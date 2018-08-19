@@ -17,9 +17,9 @@ const categories = {
 };
 
 const SideBar = ({ year = new Date().getFullYear(), list = categories }) => (
-  <section id="side-bar">
+  <div id="side-bar">
     <SocialBar />
-    <section id="calendar-category">
+    <div id="calendar-category">
       <span className="category-year">
         {year}
       </span>
@@ -29,8 +29,8 @@ const SideBar = ({ year = new Date().getFullYear(), list = categories }) => (
           return <CategoryItem key={key} labelId={key} items={list[month]} month={month} />;
         })
       }
-    </section>
-  </section>
+    </div>
+  </div>
 );
 
 SideBar.propTypes = {

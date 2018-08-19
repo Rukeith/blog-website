@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import './style.scss';
 
 const socialLinkList = [
@@ -41,13 +42,15 @@ const socialLinkList = [
 ];
 
 export default () => (
-  <section className="social-bar">
+  <div className="social-bar">
     {
       socialLinkList.map(data => (
-        <a className={`social-link ${data.symbol}`} href={data.link} key={data.symbol} target="_blank" rel="noopener noreferrer">
-          <img alt={data.alt} src={data.icon} />
-        </a>
+        <Link prefetch href={data.link}>
+          <a className={`social-link ${data.symbol}`} href={data.link} key={data.symbol} target="_blank" rel="noopener noreferrer">
+            <img alt={data.alt} src={data.icon} />
+          </a>
+        </Link>
       ))
     }
-  </section>
+  </div>
 );

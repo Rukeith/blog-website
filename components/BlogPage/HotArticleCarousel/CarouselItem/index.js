@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import './style.scss';
 
@@ -15,14 +16,12 @@ const CarouselItem = ({
   coverImage = '',
 }) => (
   <div className="carousel-item">
-    { checkContentImage(coverImage) }
-    <h3>
-      { title }
-    </h3>
+    {checkContentImage(coverImage)}
+    <h3>{title}</h3>
     <div className="carousel-item-mask">
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        { content }
-      </a>
+      <Link prefetch href={url}>
+        <a href={url} target="_blank" rel="noopener noreferrer">{content}</a>
+      </Link>
     </div>
   </div>
 );
