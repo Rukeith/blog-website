@@ -5,10 +5,8 @@ import './style.scss';
 
 const NavItem = ({ title, path }) => (
   <div className="header-nav-item">
-    <Link href={path}>
-      <a className="header-nav-item-link" href={path}>
-        {title}
-      </a>
+    <Link prefetch href={path}>
+      <a className="header-nav-item-link" href={path}>{title}</a>
     </Link>
   </div>
 );

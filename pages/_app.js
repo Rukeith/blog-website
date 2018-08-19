@@ -7,7 +7,7 @@ import configureStore from '../store/configureStore';
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     if (ctx && ctx.req && ctx.req.url === '/blog') {
-      ctx.res.writeHead(301, { Location: '\\' });
+      ctx.res.writeHead(301, { Location: '/' });
       ctx.res.end();
     }
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
