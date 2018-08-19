@@ -2,5 +2,12 @@
   padding: 30px;
   box-sizing: border-box;
   width: calc(100% - 260px);
+  background-color: #FFFFFB;
   align-content: space-between;
+}
+
+@media only screen and (max-width: 784px) {
+  #article-area {
+    width: 100%;
+  }
 }

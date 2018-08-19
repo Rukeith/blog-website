@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const checkContentImage = coverImage => (
-  coverImage
-    ? <img className="article-card-coverImage" alt="article-card-coverImage" src={coverImage} />
-    : null
-);
+const checkContentImage = (coverImage) => {
+  if (coverImage) {
+    return (
+      <div className="article-card-coverImage">
+        <img className="article-card-coverImage-img" alt="Article Card CoverImage" src={coverImage} />
+      </div>
+    );
+  }
+
+  return null;
+};
 
 const ArticleCard = ({
   url,
@@ -15,10 +21,16 @@ const ArticleCard = ({
   coverImage,
 }) => (
   <div className="article-card">
-    { checkContentImage(coverImage) }
-    <h1 className="article-card-title">{title}</h1>
-    <p className="article-card-content">{content}</p>
-    <a className="article-card-read-more" href={url}>Read More</a>
+    {checkContentImage(coverImage)}
+    <div className="article-card-block">
+      <h1 className="article-card-block-title">
+        <a href={url}>{title}</a>
+      </h1>
+      <div className="article-card-block-content">{content}</div>
+      <strong>
+        <a className="article-card-block-read-more" href={url}>Read More &#62;&#62;&emsp;</a>
+      </strong>
+    </div>
   </div>
 );
 
