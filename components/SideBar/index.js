@@ -5,7 +5,7 @@ import SocialBar from '../SocialBar';
 import './style.scss';
 
 const SideBar = ({ year, list }) => (
-  <section id="side-bar">
+  <div id="side-bar">
     <SocialBar />
     <div id="calendar-category">
       <span className="category-year">
