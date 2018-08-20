@@ -4,19 +4,7 @@ import CategoryItem from './CategoryItem';
 import SocialBar from '../SocialBar';
 import './style.scss';
 
-const categories = {
-  '03': [
-    'article one',
-    'article two',
-  ],
-  '04': [
-    'article one',
-    'article two',
-    'article three',
-  ],
-};
-
-const SideBar = ({ year = new Date().getFullYear(), list = categories }) => (
+const SideBar = ({ year, list }) => (
   <section id="side-bar">
     <SocialBar />
     <section id="calendar-category">
