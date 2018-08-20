@@ -26,7 +26,7 @@ CategoryItem.defaultProps = {
 
 CategoryItem.propTypes = {
   items: PropTypes.array,
-  month: PropTypes.number.isRequired,
+  month: PropTypes.string.isRequired,
   labelId: PropTypes.string.isRequired,
 };
 
