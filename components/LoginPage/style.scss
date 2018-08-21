@@ -3,11 +3,12 @@ $form-max-width: 400px;
 
 #login-page {
   height: 100%;
-  padding: 25px 30px;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   background-color: rgb(192, 155, 192);
 
-  h2, p {
+  h1, h3 {
     text-align: center;
   }
 }

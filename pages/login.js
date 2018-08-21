@@ -20,6 +20,14 @@ const App = ({ title }) => (
     <Header />
     <MyApp />
     <Footer />
+    <style jsx global>
+    {`
+      #__next,
+      .main {
+        height: 100%;
+      }
+    `}
+    </style>
   </div>
 );
 
