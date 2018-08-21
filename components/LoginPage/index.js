@@ -3,12 +3,8 @@ import './style.scss';
 
 export default () => (
   <main id="login-page">
-    <h2>
-      Admin Login
-    </h2>
-    <p>
-      Welcome to share your thought. Make a different.
-    </p>
+    <h1>Admin Login</h1>
+    <h3>Welcome to share your thought. Make a different.</h3>
     <form id="login-form" name="login" target="_top" action="/login" method="post">
       <input
         required
