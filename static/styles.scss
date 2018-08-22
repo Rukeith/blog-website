@@ -1,0 +1,38 @@
+%all-page {
+  height: 100%;
+}
+
+html,
+#root {
+  @extend %all-page;
+}
+
+body {
+  margin: 0;
+  @extend %all-page;
+  font-family: monospace;
+}
+
+main {
+  width: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+};
+
+@media only screen and (max-width: 870px) {
+  .main {
+    height: auto;
+  }
+}
+
+// <style jsx>
+// {`
+//   #__next,
+//   .main {
+//     height: 100%;
+//   }
+// `}
+// </style>
