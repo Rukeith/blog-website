@@ -5,11 +5,13 @@ import rootReducer from '../reducers';
 
 const configureStore = (initialState) => {
   const logger = createLogger({ collapsed: true });
+  const composeEnhancers = (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
   return createStore(
     rootReducer,
     initialState,
-    compose(applyMiddleware(thunk, logger)),
+    composeEnhancers(applyMiddleware(thunk, logger)),
   );
 };
 
