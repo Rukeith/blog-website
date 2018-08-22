@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Tab,
   Tabs,
@@ -7,6 +7,7 @@ import {
 } from 'react-tabs';
 import 'react-tabs/style/react-tabs.scss';
 import TableView from './TableView';
+import axios from '../../lib/axios';
 import './style.scss';
 import '../../static/react-table.min.scss';
 
@@ -31,26 +32,67 @@ const tagData = [
   },
 ];
 
-const AdminPage = () => (
-  <main id="portal">
-    <Tabs>
-      <TabList>
-        <Tab>Articles</Tab>
-        <Tab>Tags</Tab>
-      </TabList>
+class AdminPage extends Component {
+  constructor(props) {
+    super(props);
+    this.createTag = this.createTag.bind(this);
+    this.handleTyping = this.handleTyping.bind(this);
+    this.state = {
+      tagName: '',
+    };
+  }
 
-      <TabPanel>
-        <h2>kk</h2>
-      </TabPanel>
-      <TabPanel>
-        <div className="create-tag-input">
-          <input type="text" />
-          <button type="submit">Create Tag</button>
-        </div>
-        <TableView viewType="tag" data={tagData} />
-      </TabPanel>
-    </Tabs>
-  </main>
-);
+  handleTyping(event) {
+    this.setState({ tagName: event.target.value });
+  }
+
+  async createTag(event) {
+    event.preventDefault();
+    const { tagName } = this.state;
+    const result = await axios.post('/tags', { names: [tagName] }, {
+      headers: {
+        'Rukeith-Token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6ZmZmZjoxNzIuMjQuMC4xIiwiaWF0IjoxNTM0OTI2NzMwLCJleHAiOjE1MzQ5Mjg1MzAsImlzcyI6InJ1a2VpdGgifQ.pDydAZ-xEr59H3RdWG2RUOW8BtgJ9QcKBX5GvhVtQp8',
+      },
+    });
+    console.log('vvvvvv =', result);
+  }
+
+  render() {
+    const { tagName } = this.state;
+
+    return (
+      <main id="portal">
+        <Tabs>
+          <TabList>
+            <Tab>Articles</Tab>
+            <Tab>Tags</Tab>
+          </TabList>
+
+          <TabPanel>
+            <h2>kk</h2>
+          </TabPanel>
+          <TabPanel>
+            <form
+              className="create-tag-form"
+              onSubmit={this.createTag}
+              acceptCharset="utf-8"
+            >
+              <input
+                required
+                type="text"
+                value={tagName}
+                className="create-tag-text"
+                placeholder="Create new tag"
+                onChange={this.handleTyping}
+              />
+              <button type="submit" className="create-tag-btn">Create</button>
+            </form>
+            <TableView viewType="tag" data={tagData} />
+          </TabPanel>
+        </Tabs>
+      </main>
+    );
+  }
+}
 
 export default AdminPage;
