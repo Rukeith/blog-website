@@ -11,26 +11,26 @@ app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
-  router.get('/intro', async ctx => {
+  router.get('/intro', async (ctx) => {
     await app.render(ctx.req, ctx.res, '/intro', ctx.query);
     ctx.respond = false;
   });
 
-  router.get('/p/:id', async ctx => {
+  router.get('/p/:id', async (ctx) => {
     await app.render(ctx.req, ctx.res, '/post', { id: ctx.params.id });
     ctx.respond = false;
   });
 
-  router.get('*', async ctx => {
+  router.get('*', async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
   });
 
-  server.use(async (ctx, next) => {
+  server.use(async (ctx, nextProcess) => {
     ctx.res.statusCode = 200;
-    await next();
+    await nextProcess();
   });
 
-  server.use(router.routes())
+  server.use(router.routes());
   server.listen(port, () => console.info(`> Ready on http://localhost:${port}`));
 });
