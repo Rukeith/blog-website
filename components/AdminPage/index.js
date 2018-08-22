@@ -43,6 +43,10 @@ const AdminPage = () => (
         <h2>kk</h2>
       </TabPanel>
       <TabPanel>
+        <div className="create-tag-input">
+          <input type="text" />
+          <button type="submit">Create Tag</button>
+        </div>
         <TableView viewType="tag" data={tagData} />
       </TabPanel>
     </Tabs>

@@ -8,7 +8,6 @@ import '../../../static/react-table.min.scss';
 
 const CheckboxTable = checkboxHOC(ReactTable);
 
-
 const tagColumn = [
   {
     Header: 'Name',
@@ -74,6 +73,7 @@ class TableView extends Component {
       columns,
     };
     this.editTagName = this.editTagName.bind(this);
+    this.updateTagName = this.updateTagName.bind(this);
   }
 
   async componentDidMount() {
@@ -83,8 +83,25 @@ class TableView extends Component {
       name: item.name,
       amount: item.articles.amount,
     }));
-    console.log('tags =', tags);
     this.setState({ data: tags });
+  }
+
+  async updateTagName(e, cellInfo) {
+    const { data } = this.state;
+    const stateData = [...data];
+    const tag = stateData[cellInfo.index];
+    const name = e.target.innerHTML;
+
+    await axios.patch(`/tags/${tag.id}`, { name }, {
+      headers: {
+        'Rukeith-Token': process.env.TOKEN,
+      },
+    });
+
+    // @TODO
+    // 需要處理錯誤
+    stateData[cellInfo.index].name = name;
+    this.setState({ data: stateData });
   }
 
   editTagName(cellInfo) {
@@ -95,11 +112,7 @@ class TableView extends Component {
         style={{ backgroundColor: '#fafafa' }}
         contentEditable
         suppressContentEditableWarning
-        onBlur={(e) => {
-          const datac = [...data];
-          datac[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-          this.setState({ data: datac });
-        }}
+        onBlur={e => this.updateTagName(e, cellInfo)}
       >
         {data[cellInfo.index][cellInfo.column.id]}
       </div>
