@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
+import axios from '../../../lib/axios';
 import './style.scss';
 import '../../../static/react-table.min.scss';
 
 const CheckboxTable = checkboxHOC(ReactTable);
+
 
 const tagColumn = [
   {
@@ -17,12 +19,8 @@ const tagColumn = [
     accessor: 'amount',
   },
   {
-    Header: 'Create Time',
-    accessor: 'createdAt',
-  },
-  {
-    Header: 'Update Time',
-    accessor: 'updatedAt',
+    Header: 'Delete',
+    accessor: 'edit',
   },
 ];
 
@@ -76,6 +74,17 @@ class TableView extends Component {
       columns,
     };
     this.editTagName = this.editTagName.bind(this);
+  }
+
+  async componentDidMount() {
+    const { data } = await axios.get('/tags');
+    const tags = data.data.map(item => ({
+      id: item.id,
+      name: item.name,
+      amount: item.articles.amount,
+    }));
+    console.log('tags =', tags);
+    this.setState({ data: tags });
   }
 
   editTagName(cellInfo) {
