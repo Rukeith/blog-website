@@ -1,0 +1,23 @@
+.skill-bar {
+  margin: 0;
+  padding: 15px;
+  font: inherit;
+  min-height: 136px;
+
+  progress {
+    width: 15em;
+    height: 1.8em;
+    font-size: .8em;
+    overflow: hidden;
+    border-radius: 5em;
+    border: 1px solid #0063a6;
+  }
+
+  details {
+    margin: 5px;
+
+    p {
+      animation: 1.5s zoomIn ease;
+    }
+  }
+}
