@@ -4,7 +4,7 @@ const initialState = {
   menuOpen: false,
 };
 
-const header = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case MENU_CLICK:
       return Object.assign({}, state, { menuOpen: !state.menuOpen });
@@ -14,5 +14,3 @@ const header = (state = initialState, action) => {
       return state;
   }
 };
-
-export default header;

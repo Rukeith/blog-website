@@ -28,7 +28,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-redux": "^5.1.0-test.1",
+    "react-redux": "^5.0.7",
     "react-table": "^6.8.6",
     "react-tabs": "^2.2.2",
     "redux": "^4.0.0",

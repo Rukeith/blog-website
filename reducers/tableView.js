@@ -4,10 +4,9 @@ const initialState = {
   tags: [],
 };
 
-const tableView = (state = initialState, action) => {
+export default (state = initialState, action) => {
   const { type, tags } = action;
-  console.log('state xxxxx=', state);
-  console.log('action xxxxx=', action);
+
   switch (type) {
     case GET_TAGS:
       return Object.assign({}, state, { tags });
@@ -15,5 +14,3 @@ const tableView = (state = initialState, action) => {
       return state;
   }
 };
-
-export default tableView;

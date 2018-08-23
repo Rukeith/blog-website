@@ -99,7 +99,7 @@ class TableView extends Component {
   }
 
   editTagName(cellInfo) {
-    const { data } = this.state;
+    const { tags } = this.props;
 
     return (
       <div
@@ -108,7 +108,7 @@ class TableView extends Component {
         suppressContentEditableWarning
         onBlur={e => this.updateTagName(e, cellInfo)}
       >
-        {data[cellInfo.index][cellInfo.column.id]}
+        {tags[cellInfo.index][cellInfo.column.id]}
       </div>
     );
   }
