@@ -1,0 +1,14 @@
+.new-tag-item {
+  margin: 0 .13em;
+  font-size: 15px;
+  line-height: 1.2;
+  color: #ffffff;
+  padding: .35em .6em;
+  border-radius: 10rem;
+  list-style-type: none;
+  background-color: #17a2b8;
+  
+  .delete-new-tag-btn {
+    cursor: pointer;
+  }
+}
