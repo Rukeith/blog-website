@@ -1,4 +1,4 @@
-import { MENU_CLICK, RESIZE } from '../actions/header';
+import { RESIZE, MENU_CLICK } from '../actions/header';
 
 const initialState = {
   menuOpen: false,
@@ -9,7 +9,7 @@ const header = (state = initialState, action) => {
     case MENU_CLICK:
       return Object.assign({}, state, { menuOpen: !state.menuOpen });
     case RESIZE:
-      return Object.assign({}, state, { menuOpen: false });
+      return Object.assign({}, state, initialState);
     default:
       return state;
   }

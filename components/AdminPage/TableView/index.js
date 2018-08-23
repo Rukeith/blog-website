@@ -53,7 +53,7 @@ const articleColumn = [
 class TableView extends Component {
   constructor(props) {
     super(props);
-    const { viewType = 'article', data } = this.props;
+    const { viewType = 'article' } = this.props;
     const columns = (viewType === 'article') ? articleColumn : tagColumn;
     const sort = (viewType === 'article') ? [
       {
@@ -68,7 +68,6 @@ class TableView extends Component {
     ];
 
     this.state = {
-      data,
       sort,
       columns,
     };
@@ -77,13 +76,8 @@ class TableView extends Component {
   }
 
   async componentDidMount() {
-    const { data } = await axios.get('/tags');
-    const tags = data.data.map(item => ({
-      id: item.id,
-      name: item.name,
-      amount: item.articles.amount,
-    }));
-    this.setState({ data: tags });
+    const { getTags } = this.props;
+    await getTags();
   }
 
   async updateTagName(e, cellInfo) {
@@ -99,7 +93,7 @@ class TableView extends Component {
     });
 
     // @TODO
-    // 需要處理錯誤
+    // Need to handle error
     stateData[cellInfo.index].name = name;
     this.setState({ data: stateData });
   }
@@ -120,7 +114,8 @@ class TableView extends Component {
   }
 
   render() {
-    const { data, sort, columns } = this.state;
+    const { tags } = this.props;
+    const { sort, columns } = this.state;
     const newData = columns.map(item => ((item.accessor === 'name') ? Object.assign({}, item, { Cell: this.editTagName }) : item));
 
     return (
@@ -128,7 +123,7 @@ class TableView extends Component {
         className="select-table"
         defaultPageSize={10}
         columns={newData}
-        data={data}
+        data={tags}
         defaultSorted={sort}
         noDataText="Create your knowledges"
       />
@@ -137,13 +132,14 @@ class TableView extends Component {
 }
 
 TableView.defaultProps = {
+  tags: [],
   viewType: 'article',
-  data: [],
 };
 
 TableView.propTypes = {
+  tags: PropTypes.array,
   viewType: PropTypes.string,
-  data: PropTypes.array,
+  getTags: PropTypes.func.isRequired,
 };
 
 export default TableView;

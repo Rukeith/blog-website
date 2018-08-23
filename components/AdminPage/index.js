@@ -6,7 +6,7 @@ import {
   TabPanel,
 } from 'react-tabs';
 import 'react-tabs/style/react-tabs.scss';
-import TableView from './TableView';
+import TableView from '../../containers/TableView';
 import axios from '../../lib/axios';
 import './style.scss';
 import '../../static/react-table.min.scss';
@@ -49,12 +49,11 @@ class AdminPage extends Component {
   async createTag(event) {
     event.preventDefault();
     const { tagName } = this.state;
-    const result = await axios.post('/tags', { names: [tagName] }, {
+    await axios.post('/tags', { names: [tagName] }, {
       headers: {
-        'Rukeith-Token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6ZmZmZjoxNzIuMjQuMC4xIiwiaWF0IjoxNTM0OTI2NzMwLCJleHAiOjE1MzQ5Mjg1MzAsImlzcyI6InJ1a2VpdGgifQ.pDydAZ-xEr59H3RdWG2RUOW8BtgJ9QcKBX5GvhVtQp8',
+        'Rukeith-Token': 'fake-token',
       },
     });
-    console.log('vvvvvv =', result);
   }
 
   render() {
@@ -87,7 +86,7 @@ class AdminPage extends Component {
               />
               <button type="submit" className="create-tag-btn">Create</button>
             </form>
-            <TableView viewType="tag" data={tagData} />
+            <TableView viewType="tag" />
           </TabPanel>
         </Tabs>
       </main>
