@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
-import axios from '../../../lib/axios';
 import './style.scss';
 import '../../../static/react-table.min.scss';
 
@@ -72,7 +71,6 @@ class TableView extends Component {
       columns,
     };
     this.editTagName = this.editTagName.bind(this);
-    this.updateTagName = this.updateTagName.bind(this);
   }
 
   async componentDidMount() {
@@ -80,33 +78,15 @@ class TableView extends Component {
     await getTags();
   }
 
-  async updateTagName(e, cellInfo) {
-    const { data } = this.state;
-    const stateData = [...data];
-    const tag = stateData[cellInfo.index];
-    const name = e.target.innerHTML;
-
-    await axios.patch(`/tags/${tag.id}`, { name }, {
-      headers: {
-        'Rukeith-Token': process.env.TOKEN,
-      },
-    });
-
-    // @TODO
-    // Need to handle error
-    stateData[cellInfo.index].name = name;
-    this.setState({ data: stateData });
-  }
-
   editTagName(cellInfo) {
-    const { tags } = this.props;
+    const { tags, renameTag } = this.props;
 
     return (
       <div
         style={{ backgroundColor: '#fafafa' }}
         contentEditable
         suppressContentEditableWarning
-        onBlur={e => this.updateTagName(e, cellInfo)}
+        onBlur={e => renameTag(e.target.innerHTML, cellInfo.index, tags)}
       >
         {tags[cellInfo.index][cellInfo.column.id]}
       </div>
@@ -140,6 +120,7 @@ TableView.propTypes = {
   tags: PropTypes.array,
   viewType: PropTypes.string,
   getTags: PropTypes.func.isRequired,
+  renameTag: PropTypes.func.isRequired,
 };
 
 export default TableView;

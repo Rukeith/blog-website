@@ -1,4 +1,4 @@
-import { GET_TAGS } from '../actions/tableView';
+import { GET_TAGS, RENAME_TAG } from '../actions/tableView';
 
 const initialState = {
   tags: [],
@@ -9,6 +9,7 @@ export default (state = initialState, action) => {
 
   switch (type) {
     case GET_TAGS:
+    case RENAME_TAG:
       return Object.assign({}, state, { tags });
     default:
       return state;

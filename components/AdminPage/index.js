@@ -6,6 +6,7 @@ import {
   TabPanel,
 } from 'react-tabs';
 import 'react-tabs/style/react-tabs.scss';
+import TagsInput from './TagsInput';
 import TableView from '../../containers/TableView';
 import axios from '../../lib/axios';
 import './style.scss';
@@ -22,24 +23,15 @@ const testData = [
   },
 ];
 
-const tagData = [
-  {
-    _id: 0,
-    name: 'tag',
-    amount: 13,
-    createdAt: '2018-03-13',
-    updatedAt: '2018-03-23',
-  },
-];
-
 class AdminPage extends Component {
   constructor(props) {
     super(props);
-    this.createTag = this.createTag.bind(this);
-    this.handleTyping = this.handleTyping.bind(this);
     this.state = {
       tagName: '',
     };
+
+    this.createTag = this.createTag.bind(this);
+    this.handleTyping = this.handleTyping.bind(this);
   }
 
   handleTyping(event) {
@@ -57,8 +49,6 @@ class AdminPage extends Component {
   }
 
   render() {
-    const { tagName } = this.state;
-
     return (
       <main id="portal">
         <Tabs>
@@ -71,21 +61,7 @@ class AdminPage extends Component {
             <h2>kk</h2>
           </TabPanel>
           <TabPanel>
-            <form
-              className="create-tag-form"
-              onSubmit={this.createTag}
-              acceptCharset="utf-8"
-            >
-              <input
-                required
-                type="text"
-                value={tagName}
-                className="create-tag-text"
-                placeholder="Create new tag"
-                onChange={this.handleTyping}
-              />
-              <button type="submit" className="create-tag-btn">Create</button>
-            </form>
+            <TagsInput />
             <TableView viewType="tag" />
           </TabPanel>
         </Tabs>
