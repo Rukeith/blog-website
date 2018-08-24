@@ -10,8 +10,12 @@ export const GET_ARTICLES = 'GET_ARTICLES';
 export const DELETE_ARTICLE = 'DELETE_ARTICLE';
 
 export const getTags = () => async (dispatch) => {
-  const { data } = await axios.get('/tags');
-  const tags = data.data.map(item => ({
+  const {
+    data: {
+      data,
+    },
+  } = await axios.get('/tags');
+  const tags = data.map(item => ({
     id: item.id,
     name: item.name,
     amount: item.articles.amount,
@@ -34,7 +38,7 @@ export const renameTag = (name, index, data) => async (dispatch) => {
 
   await axios.patch(`/tags/${tag.id}`, { name }, {
     headers: {
-      'Rukeith-Token': 'fake-token',
+      'Rukeith-Token': localStorage.getItem('blog-admin-token'),
     },
   });
 
@@ -48,12 +52,16 @@ export const renameTag = (name, index, data) => async (dispatch) => {
 export const deleteTag = tagId => async (dispatch) => {
   await axios.delete(`/tags/${tagId}`, {
     headers: {
-      'Rukeith-Token': 'fake-token',
+      'Rukeith-Token': localStorage.getItem('blog-admin-token'),
     },
   });
 
-  const { data } = await axios.get('/tags');
-  const tags = data.data.map(item => ({
+  const {
+    data: {
+      data,
+    },
+  } = await axios.get('/tags');
+  const tags = data.map(item => ({
     id: item.id,
     name: item.name,
     amount: item.articles.amount,
@@ -66,8 +74,12 @@ export const deleteTag = tagId => async (dispatch) => {
 };
 
 export const getArticles = () => async (dispatch) => {
-  const { data } = await axios.get('/articles');
-  const articles = data.data.map(item => ({
+  const {
+    data: {
+      data,
+    },
+  } = await axios.get('/articles');
+  const articles = data.map(item => ({
     id: item.id,
     title: item.title,
     createdAt: DateTime.fromISO(item.createdAt).toLocaleString(timeUnit),
@@ -84,17 +96,21 @@ export const getArticles = () => async (dispatch) => {
 export const deleteArticle = articleId => async (dispatch) => {
   await axios.delete(`/articles/${articleId}`, {
     headers: {
-      'Rukeith-Token': 'fake-token',
+      'Rukeith-Token': localStorage.getItem('blog-admin-token'),
     },
   });
 
-  const { data } = await axios.get('/articles');
-  const articles = data.data.map(item => ({
+  const {
+    data: {
+      data,
+    },
+  } = await axios.get('/articles');
+  const articles = data.map(item => ({
     id: item.id,
     title: item.title,
-    createdAt: item.createdAt,
-    updatedAt: item.updatedAt,
-    publishedAt: item.publishedAt,
+    createdAt: DateTime.fromISO(item.createdAt).toLocaleString(timeUnit),
+    updatedAt: DateTime.fromFormat('2018-03-13', 'yyyy-MM-dd').toLocaleString(timeUnit),
+    publishedAt: DateTime.fromFormat('2018-04-23', 'yyyy-MM-dd').toLocaleString(timeUnit),
   }));
 
   dispatch({

@@ -5,7 +5,8 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  switch (action.type) {
+  const { type } = action;
+  switch (type) {
     case MENU_CLICK:
       return Object.assign({}, state, { menuOpen: !state.menuOpen });
     case RESIZE:
