@@ -2,20 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const Label = ({ name, tagNames, itemIndex, removeNewTag }) => (
+const Label = ({
+  name,
+  tagNames,
+  itemIndex,
+  removeItem,
+}) => (
   <li className="new-tag-item">
     {name}
     <span
       className="delete-new-tag-btn"
       role="button"
       tabIndex={itemIndex}
-      onKeyUp={
-        (event) => {
-          event.preventDefault();
-          console.log('removeNewTag =', removeNewTag);
-          removeNewTag(itemIndex, tagNames);
-        }
-      }
+      onMouseUp={() => removeItem(name, tagNames)}
     >
       (x)
     </span>
@@ -25,8 +24,8 @@ const Label = ({ name, tagNames, itemIndex, removeNewTag }) => (
 Label.propTypes = {
   name: PropTypes.string.isRequired,
   tagNames: PropTypes.array.isRequired,
+  removeItem: PropTypes.func.isRequired,
   itemIndex: PropTypes.string.isRequired,
-  removeNewTag: PropTypes.func.isRequired,
 };
 
 export default Label;

@@ -55,7 +55,7 @@ export const typingNewTag = typingName => ({
   type: TYPING_NEW_TAG,
 });
 
-export const removeNewTag = (index, tagNames) => ({
+export const removeNewTag = (name, tagNames) => ({
   type: REMOVE_NEW_TAG,
-  tagNames: tagNames.filter((item, i) => i !== index),
+  tagNames: tagNames.filter(item => item !== name),
 });
