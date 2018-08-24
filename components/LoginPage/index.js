@@ -1,41 +1,59 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './style.scss';
 
-export default () => (
+const LoginPage = ({
+  username,
+  password,
+  login,
+  typingUsername,
+  typingPassword,
+}) => (
   <main id="login-page">
     <h1>Admin Login</h1>
     <h3>Welcome to share your thought. Make a different.</h3>
-    <form id="login-form" name="login" target="_top" action="/login" method="post">
+    <form id="login-form" name="login" acceptCharset="utf-8" onSubmit={event => login(event, username, password)}>
       <input
         required
-        form="login-form"
         type="text"
         name="username"
+        value={username}
+        className="login-form"
         placeholder="Username"
-        formMethod="post"
-        formEncType="application/x-www-form-urlencoded"
+        onChange={event => typingUsername(event.target.value)}
       />
       <input
         required
-        form="login-form"
         type="password"
         name="password"
+        value={password}
+        className="login-form"
         min="8"
         placeholder="Password"
-        formMethod="post"
-        formEncType="application/x-www-form-urlencoded"
+        onChange={event => typingPassword(event.target.value)}
       />
       <button
-        className="login-submit-btn"
-        form="login-form"
         type="submit"
         name="login-submit"
-        formTarget="_top"
-        formMethod="post"
-        formEncType="application/x-www-form-urlencoded"
+        className="login-form login-submit-btn"
       >
         Login
       </button>
     </form>
   </main>
 );
+
+LoginPage.defaultProps = {
+  username: '',
+  password: '',
+};
+
+LoginPage.propTypes = {
+  username: PropTypes.string,
+  password: PropTypes.string,
+  login: PropTypes.func.isRequired,
+  typingUsername: PropTypes.func.isRequired,
+  typingPassword: PropTypes.func.isRequired,
+};
+
+export default LoginPage;

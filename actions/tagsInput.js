@@ -14,7 +14,7 @@ export const createTags = (event, names) => {
   return async (dispatch) => {
     await axios.post('/tags', { names }, {
       headers: {
-        'Rukeith-Token': 'fake-token',
+        'Rukeith-Token': localStorage.getItem('blog-admin-token'),
       },
     });
 
@@ -24,8 +24,12 @@ export const createTags = (event, names) => {
       typingName: '',
     });
 
-    const { data } = await axios.get('/tags');
-    const tags = data.data.map(item => ({
+    const {
+      data: {
+        data,
+      },
+    } = await axios.get('/tags');
+    const tags = data.map(item => ({
       id: item.id,
       name: item.name,
       amount: item.articles.amount,
