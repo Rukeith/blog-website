@@ -32,7 +32,7 @@ export const createTags = (event, names) => {
     }));
     dispatch({
       type: GET_TAGS,
-      tags,
+      data: tags,
     });
   };
 };

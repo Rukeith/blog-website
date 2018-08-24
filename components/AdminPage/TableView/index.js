@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import './style.scss';
@@ -37,33 +38,41 @@ const articleConfig = {
   ],
   column: [
     {
-      Hedaer: 'Title',
+      Header: 'Title',
       accessor: 'title',
     },
     {
-      Hedaer: 'Create Time',
+      Header: 'Create Time',
       accessor: 'createdAt',
     },
     {
-      Hedaer: 'Update Time',
+      Header: 'Update Time',
       accessor: 'updatedAt',
     },
     {
-      Hedaer: 'Publish Time',
+      Header: 'Publish Time',
       accessor: 'publishedAt',
     },
     {
-      Hedaer: 'Edit',
+      Header: 'Edit',
       accessor: 'edit',
     },
     {
-      Hedaer: 'Publish',
-      accessor: 'publishedAt',
+      Header: 'Delete',
+      accessor: 'delete',
     },
   ],
 };
 
 class TableView extends Component {
+  static editArticle({ original }) {
+    return (
+      <Link prefetch href={`/edit/artices/${original.id}`}>
+        <button className="btn edit-btn" type="button">Edit</button>
+      </Link>
+    );
+  }
+
   constructor(props) {
     super(props);
     const { viewType = 'article' } = this.props;
@@ -74,23 +83,28 @@ class TableView extends Component {
     };
     this.editTagName = this.editTagName.bind(this);
     this.deleteTag = this.deleteTag.bind(this);
+    this.deleteArticle = this.deleteArticle.bind(this);
   }
 
   async componentDidMount() {
-    const { getTags } = this.props;
-    await getTags();
+    const { viewType, getTags, getArticles } = this.props;
+    if (viewType === 'tag') {
+      await getTags();
+    } else if (viewType === 'article') {
+      await getArticles();
+    }
   }
 
   editTagName(cellInfo) {
-    const { tags, renameTag } = this.props;
-    const tagName = tags[cellInfo.index][cellInfo.column.id];
+    const { data, renameTag } = this.props;
+    const tagName = data[cellInfo.index][cellInfo.column.id];
 
     return (
       <div
         title={tagName}
         contentEditable
         suppressContentEditableWarning
-        onBlur={e => renameTag(e.target.innerHTML, cellInfo.index, tags)}
+        onBlur={e => renameTag(e.target.innerHTML, cellInfo.index, data)}
       >
         {tagName}
       </div>
@@ -100,43 +114,55 @@ class TableView extends Component {
   deleteTag({ original }) {
     const { deleteTag } = this.props;
     return (
-      <button className="delete-tag-btn" type="button" onClick={() => deleteTag(original.id)}>Delete</button>
+      <button className="btn delete-btn" type="button" onClick={() => deleteTag(original.id)}>Delete</button>
+    );
+  }
+
+  deleteArticle({ original }) {
+    const { deleteArticle } = this.props;
+    return (
+      <button className="btn delete-btn" type="button" onClick={() => deleteArticle(original.id)}>Delete</button>
     );
   }
 
   render() {
     const { sort, columns } = this.state;
-    const { tags, viewType } = this.props;
-    let newColumns;
+    const { data, viewType } = this.props;
+    let newColumns = columns;
     if (viewType === 'tag') {
-      newColumns = columns.map(item => ((item.accessor === 'name') ? Object.assign({}, item, { Cell: this.editTagName }) : item));
+      newColumns = newColumns.map(item => ((item.accessor === 'name') ? Object.assign({}, item, { Cell: this.editTagName }) : item));
       newColumns = newColumns.map(item => ((item.accessor === 'delete') ? Object.assign({}, item, { Cell: this.deleteTag }) : item));
+    } else if (viewType === 'article') {
+      newColumns = newColumns.map(item => ((item.accessor === 'edit') ? Object.assign({}, item, { Cell: TableView.editArticle }) : item));
+      newColumns = newColumns.map(item => ((item.accessor === 'delete') ? Object.assign({}, item, { Cell: this.deleteArticle }) : item));
     }
 
     return (
       <ReactTable
         className="select-table"
-        defaultPageSize={10}
+        data={data}
         columns={newColumns}
-        data={tags}
+        defaultPageSize={10}
         defaultSorted={sort}
-        noDataText="Create your knowledges"
+        noDataText="Share your knowledges"
       />
     );
   }
 }
 
 TableView.defaultProps = {
-  tags: [],
+  data: [],
   viewType: 'article',
 };
 
 TableView.propTypes = {
-  tags: PropTypes.array,
+  data: PropTypes.array,
   viewType: PropTypes.string,
   getTags: PropTypes.func.isRequired,
   renameTag: PropTypes.func.isRequired,
   deleteTag: PropTypes.func.isRequired,
+  getArticles: PropTypes.func.isRequired,
+  deleteArticle: PropTypes.func.isRequired,
 };
 
 export default TableView;

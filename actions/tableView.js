@@ -1,8 +1,13 @@
+import { DateTime } from 'luxon';
 import axios from '../lib/axios';
+
+const timeUnit = DateTime.DATETIME_SHORT_WITH_SECONDS;
 
 export const GET_TAGS = 'GET_TAGS';
 export const RENAME_TAG = 'RENAME_TAG';
 export const DELETE_TAG = 'DELETE_TAG';
+export const GET_ARTICLES = 'GET_ARTICLES';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';
 
 export const getTags = () => async (dispatch) => {
   const { data } = await axios.get('/tags');
@@ -14,7 +19,7 @@ export const getTags = () => async (dispatch) => {
 
   dispatch({
     type: GET_TAGS,
-    tags,
+    data: tags,
   });
 };
 
@@ -22,7 +27,7 @@ export const renameTag = (name, index, data) => async (dispatch) => {
   const tags = [...data];
   const tag = tags[index];
   if (tag.name === name) {
-    return dispatch({
+    dispatch({
       type: 'SKIP',
     });
   }
@@ -36,7 +41,7 @@ export const renameTag = (name, index, data) => async (dispatch) => {
   tags[index].name = name;
   dispatch({
     type: RENAME_TAG,
-    tags,
+    data: tags,
   });
 };
 
@@ -56,6 +61,44 @@ export const deleteTag = tagId => async (dispatch) => {
 
   dispatch({
     type: DELETE_TAG,
-    tags,
+    data: tags,
+  });
+};
+
+export const getArticles = () => async (dispatch) => {
+  const { data } = await axios.get('/articles');
+  const articles = data.data.map(item => ({
+    id: item.id,
+    title: item.title,
+    createdAt: DateTime.fromISO(item.createdAt).toLocaleString(timeUnit),
+    updatedAt: DateTime.fromFormat('2018-03-13', 'yyyy-MM-dd').toLocaleString(timeUnit),
+    publishedAt: DateTime.fromFormat('2018-04-23', 'yyyy-MM-dd').toLocaleString(timeUnit),
+  }));
+
+  dispatch({
+    type: GET_ARTICLES,
+    data: articles,
+  });
+};
+
+export const deleteArticle = articleId => async (dispatch) => {
+  await axios.delete(`/articles/${articleId}`, {
+    headers: {
+      'Rukeith-Token': 'fake-token',
+    },
+  });
+
+  const { data } = await axios.get('/articles');
+  const articles = data.data.map(item => ({
+    id: item.id,
+    title: item.title,
+    createdAt: item.createdAt,
+    updatedAt: item.updatedAt,
+    publishedAt: item.publishedAt,
+  }));
+
+  dispatch({
+    type: DELETE_ARTICLE,
+    data: articles,
   });
 };

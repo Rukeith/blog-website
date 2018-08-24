@@ -11,17 +11,6 @@ import TableView from '../../containers/TableView';
 import './style.scss';
 import '../../static/react-table.min.scss';
 
-// const testData = [
-//   {
-//     _id: 0,
-//     title: 'article',
-//     createdAt: '2018-03-13',
-//     updatedAt: '2018-03-23',
-//     publishedAt: '2018-04-12',
-//     edit: 'edit',
-//   },
-// ];
-
 export default () => (
   <main id="portal">
     <Tabs>
@@ -31,7 +20,7 @@ export default () => (
       </TabList>
 
       <TabPanel>
-        <h2>kk</h2>
+        <TableView viewType="article" />
       </TabPanel>
       <TabPanel>
         <TagsInput />
