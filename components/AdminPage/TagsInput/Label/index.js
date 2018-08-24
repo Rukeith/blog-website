@@ -8,10 +8,10 @@ const Label = ({
   itemIndex,
   removeItem,
 }) => (
-  <li className="new-tag-item">
+  <li className="create-tags-bar-label">
     {name}
     <span
-      className="delete-new-tag-btn"
+      className="create-tags-bar-label-delete-btn"
       role="button"
       tabIndex={itemIndex}
       onMouseUp={() => removeItem(name, tagNames)}

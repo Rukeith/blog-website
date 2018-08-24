@@ -14,29 +14,25 @@ const TagsInput = ({
   <form
     id="create-tag-form"
     acceptCharset="utf-8"
-    onSubmit={event => createTags(event, typingName)}
   >
-    <label id="create-tags" htmlFor="create-tags-input">
-      <ul>
+    <label id="create-tags-bar" htmlFor="create-tags-input">
+      <ul id="create-tags-bar-labels">
         {
           tagNames.map((item, i) => (
             <Label name={item} tagNames={tagNames} removeItem={removeNewTag} itemIndex={i} />
           ))
         }
         <input
-          required
           type="text"
           value={typingName}
-          id="create-tags-input"
+          id="create-tags-bar-text"
           placeholder="Create new tags"
           onChange={event => typingNewTag(event.target.value)}
-          onKeyDown={
-            event => setNewTag(event.keyCode, event.target.value, tagNames, typingName)
-          }
+          onKeyUp={event => setNewTag(event.keyCode, event.target.value, tagNames)}
         />
       </ul>
     </label>
-    <button type="submit" className="create-tag-btn">Create</button>
+    <button type="submit" id="create-tags-btn" onClick={event => createTags(event, tagNames)}>Create</button>
   </form>
 );
 

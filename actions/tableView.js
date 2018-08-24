@@ -11,9 +11,9 @@ export const getTags = () => async (dispatch) => {
     amount: item.articles.amount,
   }));
 
-  return dispatch({
-    tags,
+  dispatch({
     type: GET_TAGS,
+    tags,
   });
 };
 
@@ -23,14 +23,13 @@ export const renameTag = (name, index, data) => async (dispatch) => {
 
   await axios.patch(`/tags/${tag.id}`, { name }, {
     headers: {
-      'Rukeith-Token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6ZmZmZjoxMC4xNTguMTc2LjkzIiwiaWF0IjoxNTM1MDEwMTM3LCJleHAiOjE1MzUwMTE5MzcsImlzcyI6InJ1a2VpdGgifQ.P3HSsaj_PPsHezQDnooAisa0KFXWr7C40VQ26J61MSo',
+      'Rukeith-Token': 'fake-token',
     },
   });
 
   tags[index].name = name;
-
-  return dispatch({
-    tags,
+  dispatch({
     type: RENAME_TAG,
+    tags,
   });
 };
