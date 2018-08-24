@@ -67,7 +67,7 @@ const articleConfig = {
 class TableView extends Component {
   static editArticle({ original }) {
     return (
-      <Link prefetch href={`/edit/artices/${original.id}`}>
+      <Link prefetch href={`/edit/articles/${original.id}`}>
         <button className="btn edit-btn" type="button">Edit</button>
       </Link>
     );
