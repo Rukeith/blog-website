@@ -1,121 +1,124 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
-import checkboxHOC from 'react-table/lib/hoc/selectTable';
-import axios from '../../../lib/axios';
 import './style.scss';
 import '../../../static/react-table.min.scss';
 
-const CheckboxTable = checkboxHOC(ReactTable);
+const tagConfig = {
+  sort: [
+    {
+      id: 'amount',
+      desc: true,
+    },
+  ],
+  column: [
+    {
+      Header: 'Name',
+      accessor: 'name',
+    },
+    {
+      Header: 'Amount',
+      accessor: 'amount',
+    },
+    {
+      Header: 'Delete',
+      accessor: 'delete',
+      width: 150,
+    },
+  ],
+};
 
-
-const tagColumn = [
-  {
-    Header: 'Name',
-    accessor: 'name',
-  },
-  {
-    Header: 'Amount',
-    accessor: 'amount',
-  },
-  {
-    Header: 'Delete',
-    accessor: 'edit',
-  },
-];
-
-const articleColumn = [
-  {
-    Hedaer: 'Title',
-    accessor: 'title',
-  },
-  {
-    Hedaer: 'Create Time',
-    accessor: 'createdAt',
-  },
-  {
-    Hedaer: 'Update Time',
-    accessor: 'updatedAt',
-  },
-  {
-    Hedaer: 'Publish Time',
-    accessor: 'publishedAt',
-  },
-  {
-    Hedaer: 'Edit',
-    accessor: 'edit',
-  },
-  {
-    Hedaer: 'Publish',
-    accessor: 'publishedAt',
-  },
-];
+const articleConfig = {
+  sort: [
+    {
+      id: 'publishedAt',
+      desc: true,
+    },
+  ],
+  column: [
+    {
+      Hedaer: 'Title',
+      accessor: 'title',
+    },
+    {
+      Hedaer: 'Create Time',
+      accessor: 'createdAt',
+    },
+    {
+      Hedaer: 'Update Time',
+      accessor: 'updatedAt',
+    },
+    {
+      Hedaer: 'Publish Time',
+      accessor: 'publishedAt',
+    },
+    {
+      Hedaer: 'Edit',
+      accessor: 'edit',
+    },
+    {
+      Hedaer: 'Publish',
+      accessor: 'publishedAt',
+    },
+  ],
+};
 
 class TableView extends Component {
   constructor(props) {
     super(props);
-    const { viewType = 'article', data } = this.props;
-    const columns = (viewType === 'article') ? articleColumn : tagColumn;
-    const sort = (viewType === 'article') ? [
-      {
-        id: 'publishedAt',
-        desc: true,
-      },
-    ] : [
-      {
-        id: 'amount',
-        desc: true,
-      },
-    ];
+    const { viewType = 'article' } = this.props;
 
     this.state = {
-      data,
-      sort,
-      columns,
+      sort: (viewType === 'article') ? articleConfig.sort : tagConfig.sort,
+      columns: (viewType === 'article') ? articleConfig.column : tagConfig.column,
     };
     this.editTagName = this.editTagName.bind(this);
+    this.deleteTag = this.deleteTag.bind(this);
   }
 
   async componentDidMount() {
-    const { data } = await axios.get('/tags');
-    const tags = data.data.map(item => ({
-      id: item.id,
-      name: item.name,
-      amount: item.articles.amount,
-    }));
-    console.log('tags =', tags);
-    this.setState({ data: tags });
+    const { getTags } = this.props;
+    await getTags();
   }
 
   editTagName(cellInfo) {
-    const { data } = this.state;
+    const { tags, renameTag } = this.props;
+    const tagName = tags[cellInfo.index][cellInfo.column.id];
 
     return (
       <div
-        style={{ backgroundColor: '#fafafa' }}
+        title={tagName}
         contentEditable
         suppressContentEditableWarning
-        onBlur={(e) => {
-          const datac = [...data];
-          datac[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
-          this.setState({ data: datac });
-        }}
+        onBlur={e => renameTag(e.target.innerHTML, cellInfo.index, tags)}
       >
-        {data[cellInfo.index][cellInfo.column.id]}
+        {tagName}
       </div>
     );
   }
 
+  deleteTag({ original }) {
+    const { deleteTag } = this.props;
+    return (
+      <button className="delete-tag-btn" type="button" onClick={() => deleteTag(original.id)}>Delete</button>
+    );
+  }
+
   render() {
-    const { data, sort, columns } = this.state;
-    const newData = columns.map(item => ((item.accessor === 'name') ? Object.assign({}, item, { Cell: this.editTagName }) : item));
+    const { sort, columns } = this.state;
+    const { tags, viewType } = this.props;
+    let newColumns;
+    if (viewType === 'tag') {
+      newColumns = columns.map(item => ((item.accessor === 'name') ? Object.assign({}, item, { Cell: this.editTagName }) : item));
+      newColumns = newColumns.map(item => ((item.accessor === 'delete') ? Object.assign({}, item, { Cell: this.deleteTag }) : item));
+    }
 
     return (
-      <CheckboxTable
+      <ReactTable
         className="select-table"
         defaultPageSize={10}
-        columns={newData}
-        data={data}
+        columns={newColumns}
+        data={tags}
         defaultSorted={sort}
         noDataText="Create your knowledges"
       />
@@ -124,13 +127,16 @@ class TableView extends Component {
 }
 
 TableView.defaultProps = {
+  tags: [],
   viewType: 'article',
-  data: [],
 };
 
 TableView.propTypes = {
+  tags: PropTypes.array,
   viewType: PropTypes.string,
-  data: PropTypes.array,
+  getTags: PropTypes.func.isRequired,
+  renameTag: PropTypes.func.isRequired,
+  deleteTag: PropTypes.func.isRequired,
 };
 
 export default TableView;

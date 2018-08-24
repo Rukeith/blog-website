@@ -6,32 +6,23 @@ import {
   TabPanel,
 } from 'react-tabs';
 import 'react-tabs/style/react-tabs.scss';
-import TableView from './TableView';
+import TagsInput from '../../containers/TagsInput';
+import TableView from '../../containers/TableView';
 import './style.scss';
 import '../../static/react-table.min.scss';
 
-const testData = [
-  {
-    _id: 0,
-    title: 'article',
-    createdAt: '2018-03-13',
-    updatedAt: '2018-03-23',
-    publishedAt: '2018-04-12',
-    edit: 'edit',
-  },
-];
+// const testData = [
+//   {
+//     _id: 0,
+//     title: 'article',
+//     createdAt: '2018-03-13',
+//     updatedAt: '2018-03-23',
+//     publishedAt: '2018-04-12',
+//     edit: 'edit',
+//   },
+// ];
 
-const tagData = [
-  {
-    _id: 0,
-    name: 'tag',
-    amount: 13,
-    createdAt: '2018-03-13',
-    updatedAt: '2018-03-23',
-  },
-];
-
-const AdminPage = () => (
+export default () => (
   <main id="portal">
     <Tabs>
       <TabList>
@@ -43,10 +34,9 @@ const AdminPage = () => (
         <h2>kk</h2>
       </TabPanel>
       <TabPanel>
-        <TableView viewType="tag" data={tagData} />
+        <TagsInput />
+        <TableView viewType="tag" />
       </TabPanel>
     </Tabs>
   </main>
 );
-
-export default AdminPage;

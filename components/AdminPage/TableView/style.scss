@@ -1,0 +1,38 @@
+.ReactTable {
+  .rt-th {
+    outline: none;
+    font-size: large;
+    line-height: 30px;
+    font-weight: bold;
+  }
+
+  .rt-td {
+    line-height: 30px;
+    text-align: center;
+    text-overflow: ellipsis;
+  
+    div {
+      outline: none;
+    }
+  }
+}
+
+.delete-tag-btn {
+  outline: none;
+  cursor: pointer;
+  line-height: 1rem;
+  color: #ffffff;
+  border-radius: .25rem;
+  padding: .375rem .75rem;
+  border-color: #dc3545;
+  background-color: #dc3545;
+  transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out,
+    box-shadow .15s ease-in-out;
+
+  &:hover {
+    border-color: #bd2130;
+    background-color: #c82333;
+  }
+}
