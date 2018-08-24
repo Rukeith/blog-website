@@ -4,7 +4,7 @@ import TableView from '../components/AdminPage/TableView';
 import * as TableViewActions from '../actions/tableView';
 
 const mapStateToProps = state => ({
-  tags: state.tableView.tags,
+  data: state.tableView.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(TableViewActions, dispatch);
