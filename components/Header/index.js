@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import NavItem from '../NavItem';
+import NavItem from '../../containers/NavItem';
 import SearchInput from '../SearchInput';
 import './style.scss';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: '',
+    };
+  }
+
   componentDidMount() {
     const { resize } = this.props;
     if (window) window.addEventListener('resize', () => resize());
+    const token = localStorage.getItem('blog-admin-token');
+    this.setState({ token });
   }
 
   componentWillUnmount() {
@@ -16,7 +25,8 @@ class Header extends Component {
   }
 
   render() {
-    const { token, menuOpen, menuClick } = this.props;
+    const { token } = this.state;
+    const { menuOpen, menuClick } = this.props;
     let headerClassName = (menuOpen) ? 'menu-open ' : '';
     headerClassName += (token) ? 'login-auth ' : '';
 
@@ -43,12 +53,10 @@ class Header extends Component {
 }
 
 Header.defaultProps = {
-  token: '',
   menuOpen: false,
 };
 
 Header.propTypes = {
-  token: PropTypes.string,
   menuOpen: PropTypes.bool,
   resize: PropTypes.func.isRequired,
   menuClick: PropTypes.func.isRequired,

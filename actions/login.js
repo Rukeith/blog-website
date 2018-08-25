@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import axios from '../lib/axios';
 
 export const LOGIN = 'LOGIN';
@@ -31,4 +32,5 @@ export const login = (event, username, password) => async (dispatch) => {
   dispatch({
     type: LOGIN,
   });
+  Router.push('/admin');
 };

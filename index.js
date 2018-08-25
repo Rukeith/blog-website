@@ -11,16 +11,6 @@ app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
-  router.get('/intro', async (ctx) => {
-    await app.render(ctx.req, ctx.res, '/intro', ctx.query);
-    ctx.respond = false;
-  });
-
-  router.get('/p/:id', async (ctx) => {
-    await app.render(ctx.req, ctx.res, '/post', { id: ctx.params.id });
-    ctx.respond = false;
-  });
-
   router.get('*', async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
