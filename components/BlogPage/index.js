@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleArea from './ArticleArea';
+import ArticleArea from '../../containers/ArticleArea';
 import HotArticleCarousel from './HotArticleCarousel';
 import SideBar from '../SideBar';
 import './style.scss';
