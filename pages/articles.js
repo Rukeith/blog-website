@@ -8,14 +8,17 @@ import '../static/styles.scss';
 import '../static/animate.min.scss';
 
 class App extends Component {
-  static async getInitialProps({ query: { articleId } }) {
-    // const data = await axios.get(`/articles/${articleId}`);
-    console.log('articleId =', articleId);
-    return {};
+  static async getInitialProps({ query: { articleTitle } }) {
+    const {
+      data: {
+        data,
+      },
+    } = await axios.get(`/articles/${articleTitle}`);
+    return { article: data };
   }
 
   render() {
-    const { title } = this.props;
+    const { title, article } = this.props;
 
     return (
       <div className="main">
@@ -26,7 +29,15 @@ class App extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         </Head>
         <Header />
-        <MyApp />
+        <MyApp article={article} />
+        <style jsx global>
+        {`
+          #__next,
+          .main {
+            height: 100%;
+          }
+        `}
+        </style>
       </div>
     );
   }
@@ -38,6 +49,7 @@ App.defaultProps = {
 
 App.propTypes = {
   title: PropTypes.string,
+  article: PropTypes.object.isRequired,
 };
 
 export default App;

@@ -11,12 +11,10 @@ app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
-  router.get('/articles/:articleId', async (ctx) => {
-    console.log('ctx =', ctx);
-    await app.render(ctx.req, ctx.res, '/articles', { articleId: ctx.params.articleId });
+  router.get('/articles/:articleTitle', async (ctx) => {
+    await app.render(ctx.req, ctx.res, '/articles', { articleTitle: ctx.params.articleTitle });
     ctx.respond = false;
   });
-
 
   router.get('*', async (ctx) => {
     await handle(ctx.req, ctx.res);

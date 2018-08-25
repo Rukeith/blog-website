@@ -5,7 +5,7 @@ import Breadcrumb from './Breadcrumb';
 import CommentSection from './CommentSection';
 import './style.scss';
 
-const Article = ({ breadcrumb = [], title, content }) => (
+const Article = ({ title, content, breadcrumb = [] }) => (
   <div id="article">
     <Breadcrumb breadcrumb={breadcrumb} />
     <article id="content">
@@ -18,9 +18,9 @@ const Article = ({ breadcrumb = [], title, content }) => (
 );
 
 Article.propTypes = {
-  breadcrumb: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  breadcrumb: PropTypes.array.isRequired,
 };
 
 export default Article;

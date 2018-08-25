@@ -8,14 +8,13 @@ export const getArticles = () => async (dispatch) => {
       data,
     },
   } = await axios.get('/articles');
-  console.log('data =', data);
+
   const articles = data.map(item => ({
     id: item.id,
     title: item.title,
     begins: item.begins,
-    url: `/articles/${item.id}`,
+    url: `/articles/${item.title}`,
     coverImage: item.coverImages[0],
-    browserUrl: (item.url) ? `/articles/${item.url}` : `/articles/${item.id}`,
   }));
 
   articles.push({
@@ -29,7 +28,6 @@ export const getArticles = () => async (dispatch) => {
       PageMaker including versions of Lorem Ipsum.`,
     url: '/articles/0',
     coverImage: 'https://react-etc.net/files/2018-01/next-nuxt.png',
-    browserUrl: '/articles/demo-0',
   });
 
   articles.push({
@@ -48,7 +46,6 @@ export const getArticles = () => async (dispatch) => {
       accompanied by English versions from the 1914 translation by H. Rackham.`,
     url: '/articles/1',
     coverImage: '',
-    browserUrl: '/articles/demo-1',
   });
 
   dispatch({
