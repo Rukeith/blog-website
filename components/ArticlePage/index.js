@@ -29,6 +29,7 @@ const categories = {
 const ArticlePage = ({ article }) => (
   <main id="article-page">
     <Article
+      articleId={article.id}
       breadcrumb={['Programming', 'Nodejs']}
       title={article.title}
       content={content}

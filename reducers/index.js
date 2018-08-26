@@ -5,6 +5,7 @@ import header from './header';
 import tagsInput from './tagsInput';
 import tableView from './tableView';
 import articleArea from './articleArea';
+import commentForm from './commentForm';
 
 const rootReducer = combineReducers({
   login,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   tagsInput,
   tableView,
   articleArea,
+  commentForm,
 });
 
 export default rootReducer;

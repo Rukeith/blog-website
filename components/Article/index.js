@@ -5,7 +5,7 @@ import Breadcrumb from './Breadcrumb';
 import CommentSection from './CommentSection';
 import './style.scss';
 
-const Article = ({ title, content, breadcrumb = [] }) => (
+const Article = ({ articleId, title, content, breadcrumb = [] }) => (
   <div id="article">
     <Breadcrumb breadcrumb={breadcrumb} />
     <article id="content">
@@ -13,11 +13,12 @@ const Article = ({ title, content, breadcrumb = [] }) => (
       {content}
     </article>
     <ShareBar />
-    <CommentSection />
+    <CommentSection articleId={articleId} />
   </div>
 );
 
 Article.propTypes = {
+  articleId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   breadcrumb: PropTypes.array.isRequired,

@@ -34,7 +34,7 @@ class App extends Component {
         {`
           #__next,
           .main {
-            height: 100%;
+            min-height: 100%;
           }
         `}
         </style>
