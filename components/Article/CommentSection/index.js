@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CommentForm from '../../../containers/CommentForm';
-import CommentList from './CommentList';
+import CommentList from '../../../containers/CommentList';
 import './style.scss';
 
 const CommentSection = ({ articleId }) => (
   <div className="article-comments">
     <h2>Commnets</h2>
     <CommentForm articleId={articleId} />
-    {/* <CommentList /> */}
+    <hr />
+    <CommentList articleId={articleId} />
   </div>
 );
 
 CommentSection.propTypes = {
-  articleId: PropTypes.object.isRequired,
+  articleId: PropTypes.string.isRequired,
 };
 
 export default CommentSection;

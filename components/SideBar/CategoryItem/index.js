@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import './style.scss';
 
@@ -12,9 +13,11 @@ const CategoryItem = ({ items = [], month, labelId }) => (
     <span className="fa" />
     <div className="category-article-list">
       {items.map(title => (
-        <span className="category-article-title" title={title} key={title}>
-          {title}
-        </span>
+        <Link href={`/articles/${title}`}>
+          <span className="category-article-title" title={title} key={title}>
+            {title}
+          </span>
+        </Link>
       ))}
     </div>
   </label>

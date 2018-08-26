@@ -1,4 +1,5 @@
 import axios from '../lib/axios';
+import { GET_COMMENTS } from './commentList';
 
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const TYPING_COMMENT = 'TYPING_COMMENT';
@@ -8,17 +9,28 @@ export const createComment = (event, articleId, {
   username,
   email,
   context,
-}, comments) => {
+}) => {
   event.preventDefault();
 
   return async (dispatch) => {
     await axios.post(`articles/${articleId}/comments`, { username, email, context });
-    comments.push({ username, comment: context });
 
     dispatch({
       type: CREATE_COMMENT,
       name: '',
       comment: '',
+    });
+    const {
+      data: {
+        data,
+      },
+    } = await axios.get(`articles/${articleId}/comments`);
+    const comments = data.map(comment => ({
+      username: comment.username,
+      comment: comment.context,
+    }));
+    dispatch({
+      type: GET_COMMENTS,
       comments,
     });
   };

@@ -29,10 +29,14 @@ export const createTags = (event, names) => {
         data,
       },
     } = await axios.get('/tags');
-    const tags = data.map(item => ({
-      id: item.id,
-      name: item.name,
-      amount: item.articles.amount,
+    const tags = data.map(({
+      id,
+      name,
+      articles: { amount },
+    }) => ({
+      id,
+      name,
+      amount,
     }));
     dispatch({
       type: GET_TAGS,

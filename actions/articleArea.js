@@ -9,12 +9,14 @@ export const getArticles = () => async (dispatch) => {
     },
   } = await axios.get('/articles');
 
-  const articles = data.map(item => ({
-    id: item.id,
-    title: item.title,
-    begins: item.begins,
-    url: `/articles/${item.title}`,
-    coverImage: item.coverImages[0],
+  const articles = data.map(({
+    id, title, begins, coverImages,
+  }) => ({
+    id,
+    title,
+    begins,
+    url: `/articles/${title}`,
+    coverImage: coverImages[0],
   }));
 
   articles.push({

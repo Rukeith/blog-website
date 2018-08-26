@@ -5,7 +5,12 @@ import Breadcrumb from './Breadcrumb';
 import CommentSection from './CommentSection';
 import './style.scss';
 
-const Article = ({ articleId, title, content, breadcrumb = [] }) => (
+const Article = ({
+  articleId,
+  title,
+  content,
+  breadcrumb = [],
+}) => (
   <div id="article">
     <Breadcrumb breadcrumb={breadcrumb} />
     <article id="content">

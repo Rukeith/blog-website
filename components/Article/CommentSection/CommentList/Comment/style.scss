@@ -1,0 +1,20 @@
+.article-comment {
+  padding: 10px 20px;
+  margin: 20px 0;
+  color: #9EA0AA;
+  border-radius: 5px;
+  text-transform: capitalize;
+  box-shadow: 0px 15px 30px rgba(40, 40, 80, 0.2);
+
+  .article-comment-headline {
+    .article-comment-author {
+      margin: 1em 0;
+      display: inline-block;
+    }
+
+    .article-comment-createdAt {
+      float: right;
+      display: block;
+    }
+  }
+}

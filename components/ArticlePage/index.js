@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Article from '../Article';
-import SideBar from '../SideBar';
+import SideBar from '../../containers/SideBar';
 import './style.scss';
 
 const content = `It is a long established fact that a reader will be distracted by 
@@ -13,19 +13,6 @@ const content = `It is a long established fact that a reader will be distracted 
   in their infancy. Various versions have evolved over the years, 
   sometimes by accident, sometimes on purpose (injected humour and the like).`;
 
-const year = new Date().getFullYear();
-const categories = {
-  '03': [
-    'article one',
-    'article two',
-  ],
-  '04': [
-    'article one',
-    'article two',
-    'article three',
-  ],
-};
-
 const ArticlePage = ({ article }) => (
   <main id="article-page">
     <Article
@@ -34,7 +21,7 @@ const ArticlePage = ({ article }) => (
       title={article.title}
       content={content}
     />
-    <SideBar year={year} list={categories} />
+    <SideBar />
   </main>
 );
 
