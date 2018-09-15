@@ -7,15 +7,19 @@ export const getArticles = () => async (dispatch) => {
     data: {
       data,
     },
-  } = await axios.get('/articles');
+  } = await axios.get('/articles', {
+    params: {
+      fields: 'title,begins,url,coverImages',
+    },
+  });
 
   const articles = data.map(({
-    id, title, begins, coverImages,
+    id, url, title, begins, coverImages,
   }) => ({
     id,
     title,
     begins,
-    url: `/articles/${title}`,
+    url: `/articles/${url}`,
     coverImage: coverImages[0],
   }));
 

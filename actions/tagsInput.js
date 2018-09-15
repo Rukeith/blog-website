@@ -29,6 +29,7 @@ export const createTags = (event, names) => {
         data,
       },
     } = await axios.get('/tags');
+
     const tags = data.map(({
       id,
       name,

@@ -15,6 +15,7 @@ export const getTags = () => async (dispatch) => {
       data,
     },
   } = await axios.get('/tags');
+
   const tags = data.map(({
     id,
     name,
@@ -65,6 +66,7 @@ export const deleteTag = tagId => async (dispatch) => {
       data,
     },
   } = await axios.get('/tags');
+
   const tags = data.map(({
     id,
     name,
@@ -86,13 +88,19 @@ export const getArticles = () => async (dispatch) => {
     data: {
       data,
     },
-  } = await axios.get('/articles');
+  } = await axios.get('/articles', {
+    params: {
+      fields: 'title,createdAt,updatedAt,publishedAt',
+    },
+  });
+
   const articles = data.map(item => ({
-    id: item.id,
+    id: item._id,
     title: item.title,
     createdAt: DateTime.fromISO(item.createdAt).toLocaleString(timeUnit),
-    updatedAt: DateTime.fromFormat('2018-03-13', 'yyyy-MM-dd').toLocaleString(timeUnit),
-    publishedAt: DateTime.fromFormat('2018-04-23', 'yyyy-MM-dd').toLocaleString(timeUnit),
+    updatedAt: DateTime.fromISO(item.updatedAt).toLocaleString(timeUnit),
+    publishedAt: item.publishedAt
+      ? DateTime.fromISO(item.publishedAt).toLocaleString(timeUnit) : null,
   }));
 
   dispatch({
@@ -112,13 +120,19 @@ export const deleteArticle = articleId => async (dispatch) => {
     data: {
       data,
     },
-  } = await axios.get('/articles');
+  } = await axios.get('/articles', {
+    params: {
+      fields: 'title,createdAt,updatedAt,publishedAt',
+    },
+  });
+
   const articles = data.map(item => ({
     id: item.id,
     title: item.title,
     createdAt: DateTime.fromISO(item.createdAt).toLocaleString(timeUnit),
-    updatedAt: DateTime.fromFormat('2018-03-13', 'yyyy-MM-dd').toLocaleString(timeUnit),
-    publishedAt: DateTime.fromFormat('2018-04-23', 'yyyy-MM-dd').toLocaleString(timeUnit),
+    updatedAt: DateTime.fromISO(item.updatedAt).toLocaleString(timeUnit),
+    publishedAt: item.publishedAt
+      ? DateTime.fromISO(item.publishedAt).toLocaleString(timeUnit) : null,
   }));
 
   dispatch({
