@@ -10,7 +10,12 @@ export const getCategories = () => async (dispatch) => {
     data: {
       data,
     },
-  } = await axios.get('/articles');
+  } = await axios.get('/articles', {
+    params: {
+      fields: 'title,url,publishedAt',
+    },
+  });
+
   const categories = {};
   data.forEach(({ title, publishedAt }) => {
     if (publishedAt) {
