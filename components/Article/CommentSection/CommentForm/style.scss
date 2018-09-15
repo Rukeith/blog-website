@@ -1,0 +1,42 @@
+$action: #626FB0;
+$separator: #F1F1F6;
+$containerShadow: rgba(40, 40, 80, 0.2);
+
+.article-comments-form {
+  min-height: 156px;
+  padding: 0 20px 20px;
+
+  input {
+    width: 100%;
+    border: none;
+    height: 48px;
+    font-size: 14px;
+    color: #9EA0AA;
+    border-bottom: 1px solid $separator;
+
+    &:focus {
+      outline: none;
+      box-shadow: inset 2px 0 0 0 $action;
+    }
+  }
+
+  button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    color: #FFFFFF;
+    transition: 0.2s;
+    border-radius: 50%;
+    background: $action;
+    box-shadow: 0 3px 8px 3px $containerShadow;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      transform: scale(1.2);
+      box-shadow: 0 5px 15px 0px $containerShadow;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.article-breadcrumb {
+  padding: 10px;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  border-radius: 1rem;
+  background-color: rgba($color: #BDC0BA, $alpha: .35);
+
+  .breadcrumb-link {
+    display: inline-block;
+    
+    strong:hover {
+      cursor: pointer;
+      color: #FFBA84;
+    }
+
+    span {
+      margin: 0 10px;
+    }
+  }
+}

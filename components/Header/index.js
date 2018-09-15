@@ -45,7 +45,7 @@ class Header extends Component {
         <SearchInput />
         <NavItem path="/intro" title="Intro" />
         <NavItem path="/" title="Blog" />
-        { token && <NavItem path="/create" title="Creaete Article" /> }
+        { token && <NavItem path="/admin" title="Admin Page" /> }
         { token ? (<NavItem path="/logout" title="Logout" />) : (<NavItem path="/login" title="Login" />) }
       </header>
     );

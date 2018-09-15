@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux';
 import TagsInput from '../components/AdminPage/TagsInput';
 import * as TagsInputActions from '../actions/tagsInput';
 
-const mapStateToProps = state => ({
-  tagNames: state.tagsInput.tagNames,
-  typingName: state.tagsInput.typingName,
+const mapStateToProps = ({ tagsInput: { tagNames, typingName } }) => ({
+  tagNames,
+  typingName,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(TagsInputActions, dispatch);
