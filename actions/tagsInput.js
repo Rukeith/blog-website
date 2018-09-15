@@ -47,11 +47,13 @@ export const createTags = (event, names) => {
 };
 
 export const setNewTag = (keyCode, typingName, tagNames) => {
+  const tags = new Set([...tagNames, typingName]);
+
   if (keyCode === 13) {
     return {
       type: SET_NEW_TAG,
       typingName: '',
-      tagNames: [...tagNames, typingName],
+      tagNames: Array.from(tags),
     };
   }
   if (keyCode === 8 && tagNames.length && !typingName) {
