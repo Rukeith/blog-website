@@ -49,6 +49,10 @@ $minus-icon-url: url('https://firebasestorage.googleapis.com/v0/b/blog-5d8c6.app
 
 .category-article-title {
   width: 100%;
+
+  &:hover {
+    background-color: wheat;
+  }
 }
 
 .fa {

@@ -11,6 +11,11 @@ app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
+  router.get('/articles/:articleUrl', async (ctx) => {
+    await app.render(ctx.req, ctx.res, '/articles', { articleUrl: ctx.params.articleUrl });
+    ctx.respond = false;
+  });
+
   router.get('*', async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
@@ -22,5 +27,5 @@ app.prepare().then(() => {
   });
 
   server.use(router.routes());
-  server.listen(port, () => console.info(`> Ready on http://localhost:${port}`));
+  server.listen(port, () => console.info(`> Ready on port : ${port}`));
 });
