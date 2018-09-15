@@ -8,13 +8,34 @@ import '../static/styles.scss';
 import '../static/animate.min.scss';
 
 class App extends Component {
-  static async getInitialProps({ query: { articleTitle } }) {
+  static async getInitialProps({ query: { articleUrl } }) {
     const {
       data: {
-        data,
+        data: {
+          _id: id,
+          url,
+          title,
+          content,
+          category,
+          publishedAt,
+        },
       },
-    } = await axios.get(`/articles/${articleTitle}`);
-    return { article: data };
+    } = await axios.get(`/articles/${articleUrl}`, {
+      params: {
+        fields: 'content,title,url,category,publishedAt',
+      },
+    });
+
+    return {
+      article: {
+        id,
+        url,
+        title,
+        content,
+        publishedAt,
+        breadcrumb: category.split('>'),
+      },
+    };
   }
 
   render() {

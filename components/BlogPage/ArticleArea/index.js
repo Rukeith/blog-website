@@ -16,14 +16,18 @@ class ArticleArea extends Component {
     return (
       <section id="article-area">
         {
-          articles.map(item => (
+          articles.map(({
+            url,
+            title,
+            begins,
+            coverImage,
+          }) => (
             <ArticleCard
-              url={item.url}
-              key={item.title}
-              title={item.title}
-              begins={item.begins}
-              coverImage={item.coverImage}
-              browserUrl={item.browserUrl}
+              url={url}
+              key={url}
+              title={title}
+              begins={begins}
+              coverImage={coverImage}
             />
           ))
         }

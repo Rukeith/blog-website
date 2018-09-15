@@ -11,6 +11,7 @@ export const getComments = articleId => async (dispatch) => {
       data,
     },
   } = await axios.get(`articles/${articleId}/comments`);
+
   const comments = data.map(({ username, context: comment, createdAt }) => ({
     username,
     comment,

@@ -1,5 +1,8 @@
+import { DateTime } from 'luxon';
 import axios from '../lib/axios';
 import { GET_COMMENTS } from './commentList';
+
+const timeUnit = DateTime.DATETIME_SHORT_WITH_SECONDS;
 
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const TYPING_COMMENT = 'TYPING_COMMENT';
@@ -20,15 +23,18 @@ export const createComment = (event, articleId, {
       name: '',
       comment: '',
     });
+
     const {
       data: {
         data,
       },
     } = await axios.get(`articles/${articleId}/comments`);
-    const comments = data.map(comment => ({
-      username: comment.username,
-      comment: comment.context,
+    const comments = data.map(({ username: name, context: comment, createdAt }) => ({
+      username: name,
+      comment,
+      createdAt: DateTime.fromISO(createdAt).toLocaleString(timeUnit),
     }));
+
     dispatch({
       type: GET_COMMENTS,
       comments,

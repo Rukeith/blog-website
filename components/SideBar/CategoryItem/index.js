@@ -5,16 +5,13 @@ import './style.scss';
 
 const CategoryItem = ({ items = [], month, labelId }) => (
   <label className="category-item-label" htmlFor={labelId}>
-    <span className="category-month">
-      {month}
-      月
-    </span>
+    <span className="category-month">{month}</span>
     <input id={labelId} type="checkbox" />
     <span className="fa" />
     <div className="category-article-list">
-      {items.map(title => (
-        <Link href={`/articles/${title}`}>
-          <span className="category-article-title" title={title} key={title}>
+      {items.map(({ url, title }) => (
+        <Link href={url} key={url}>
+          <span className="category-article-title" title={title}>
             {title}
           </span>
         </Link>

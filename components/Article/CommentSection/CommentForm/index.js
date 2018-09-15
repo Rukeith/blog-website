@@ -10,22 +10,20 @@ const CommentForm = ({
   createComment,
   typingComment,
   typingCommentName,
-}) => {
-  return (
-    <div className="article-comments-form">
-      <form onSubmit={
-          event => createComment(event, articleId, { username: name, context: comment })
-        }
-      >
-        <input type="text" value={name} placeholder="Your name" onChange={event => typingCommentName(event.target.value)} />
-        <input type="text" value={comment} placeholder="Your thoughts" onChange={event => typingComment(event.target.value)} />
-        <button type="submit">
-          <FontAwesomeIcon icon="paper-plane" />
-        </button>
-      </form>
-    </div>
-  );
-};
+}) => (
+  <div className="article-comments-form">
+    <form onSubmit={
+        event => createComment(event, articleId, { username: name, context: comment })
+      }
+    >
+      <input type="text" value={name} placeholder="Your name" onChange={event => typingCommentName(event.target.value)} />
+      <input type="text" value={comment} placeholder="Your thoughts" onChange={event => typingComment(event.target.value)} />
+      <button type="submit">
+        <FontAwesomeIcon icon="paper-plane" />
+      </button>
+    </form>
+  </div>
+);
 
 CommentForm.defaultProps = {
   name: '',

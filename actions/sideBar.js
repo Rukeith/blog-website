@@ -12,17 +12,19 @@ export const getCategories = () => async (dispatch) => {
     },
   } = await axios.get('/articles', {
     params: {
-      fields: 'title,url,publishedAt',
+      sortby: 'publishedAt',
+      fields: 'url,title,publishedAt',
     },
   });
 
   const categories = {};
-  data.forEach(({ title, publishedAt }) => {
+  data.forEach(({ url, title, publishedAt }) => {
     if (publishedAt) {
       const dt = DateTime.fromISO(publishedAt);
       const { year, monthLong } = dt;
       const item = {
         title,
+        url: `/articles/${url}`,
         publishedAt: dt.toLocaleString(timeUnit),
       };
 
