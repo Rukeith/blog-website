@@ -2,7 +2,7 @@ import React from 'react';
 import './style.scss';
 
 const ShareBar = () => (
-  <div>
+  <div className="article-share-bar">
     share
   </div>
 );

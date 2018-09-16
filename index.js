@@ -11,13 +11,13 @@ app.prepare().then(() => {
   const server = new Koa();
   const router = new Router();
 
-  router.get('/intro', async (ctx) => {
-    await app.render(ctx.req, ctx.res, '/intro', ctx.query);
+  router.get('/articles/:articleUrl', async (ctx) => {
+    await app.render(ctx.req, ctx.res, '/articles', { articleUrl: ctx.params.articleUrl });
     ctx.respond = false;
   });
 
-  router.get('/p/:id', async (ctx) => {
-    await app.render(ctx.req, ctx.res, '/post', { id: ctx.params.id });
+  router.get('/edit/articles/:articleId', async (ctx) => {
+    await app.render(ctx.req, ctx.res, '/create', { articleId: ctx.params.articleId });
     ctx.respond = false;
   });
 
@@ -32,5 +32,5 @@ app.prepare().then(() => {
   });
 
   server.use(router.routes());
-  server.listen(port, () => console.info(`> Ready on http://localhost:${port}`));
+  server.listen(port, () => console.info(`> Ready on port : ${port}`));
 });

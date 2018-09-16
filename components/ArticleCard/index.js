@@ -18,7 +18,7 @@ const checkContentImage = (coverImage) => {
 const ArticleCard = ({
   url,
   title,
-  content,
+  begins,
   coverImage,
 }) => (
   <div className="article-card">
@@ -29,12 +29,10 @@ const ArticleCard = ({
           <a href={url}>{title}</a>
         </Link>
       </h1>
-      <div className="article-card-block-content">{content}</div>
-      <strong>
-        <Link prefetch href={url}>
-          <a className="article-card-block-read-more" href={url}>Read More &#62;&#62;&emsp;</a>
-        </Link>
-      </strong>
+      <div className="article-card-block-content">{begins}</div>
+      <Link prefetch href={url}>
+        <a className="article-card-block-read-more" href={url}>Read More &#62;&#62;&emsp;</a>
+      </Link>
     </div>
   </div>
 );
@@ -47,7 +45,7 @@ ArticleCard.propTypes = {
   coverImage: PropTypes.string,
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  begins: PropTypes.string.isRequired,
 };
 
 export default ArticleCard;

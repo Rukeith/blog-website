@@ -1,0 +1,29 @@
+.ReactTable {
+  .rt-th {
+    outline: none;
+    font-size: large;
+    line-height: 30px;
+    font-weight: bold;
+  }
+
+  .rt-td {
+    line-height: 30px;
+    text-align: center;
+    text-overflow: ellipsis;
+  
+    div {
+      outline: none;
+    }
+  }
+}
+
+.react-tabs {
+  .react-tabs__tab {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+
+    &:hover {
+      border-color: #e9ecef #e9ecef #dee2e6;
+    }
+  }
+}

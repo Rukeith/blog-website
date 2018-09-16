@@ -60,3 +60,4 @@ typings/
 yarn.lock
 dist
 .next
+package-lock.json
