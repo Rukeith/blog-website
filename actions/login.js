@@ -15,22 +15,25 @@ export const typingPassword = password => ({
   password,
 });
 
-export const login = (event, username, password) => async (dispatch) => {
+export const login = (event, username, password) => {
   event.preventDefault();
-  const {
-    data: {
-      data: {
-        token,
-      },
-    },
-  } = await axios.post('/login', {
-    username,
-    password,
-  });
-  localStorage.setItem('blog-admin-token', token);
 
-  dispatch({
-    type: LOGIN,
-  });
-  Router.push('/admin');
+  return async (dispatch) => {
+    const {
+      data: {
+        data: {
+          token,
+        },
+      },
+    } = await axios.post('/login', {
+      username,
+      password,
+    });
+    localStorage.setItem('blog-admin-token', token);
+
+    dispatch({
+      type: LOGIN,
+    });
+    Router.push('/admin');
+  };
 };

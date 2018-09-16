@@ -16,6 +16,11 @@ app.prepare().then(() => {
     ctx.respond = false;
   });
 
+  router.get('/edit/articles/:articleId', async (ctx) => {
+    await app.render(ctx.req, ctx.res, '/create', { articleId: ctx.params.articleId });
+    ctx.respond = false;
+  });
+
   router.get('*', async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;

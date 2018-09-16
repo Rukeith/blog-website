@@ -15,6 +15,7 @@ export const TYPING_URL = 'TYPING_URL';
 export const TYPING_CATEGORY = 'TYPING_CATEGORY';
 
 export const saveArticle = (event, {
+  articleId,
   typingUrl: url,
   typingTitle: title,
   currentContent: content,
@@ -24,20 +25,27 @@ export const saveArticle = (event, {
 
   return async (dispatch) => {
     const begins = content.slice(0, 100);
-    const formatContent = marked(content);
     const params = {
       url,
       title,
       begins,
-      content: formatContent,
+      content,
       category: category.split(','),
     };
 
-    await axios.post('/articles', params, {
-      headers: {
-        'Rukeith-Token': localStorage.getItem('blog-admin-token'),
-      },
-    });
+    if (articleId) {
+      await axios.put(`/articles/${articleId}`, params, {
+        headers: {
+          'Rukeith-Token': localStorage.getItem('blog-admin-token'),
+        },
+      });
+    } else {
+      await axios.post('/articles', params, {
+        headers: {
+          'Rukeith-Token': localStorage.getItem('blog-admin-token'),
+        },
+      });
+    }
 
     dispatch({
       type: SAVE_ARTICLE,
