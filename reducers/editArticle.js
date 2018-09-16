@@ -3,7 +3,7 @@ import {
   TYPING_TITLE,
   TYPING_URL,
   TYPING_CATEGORY,
-} from '../actions/EditArticle';
+} from '../actions/editArticle';
 
 const initialState = {
   typingTitle: '',

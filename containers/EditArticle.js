@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import EditArticle from '../components/EditArticle';
-import * as EditArticleActions from '../actions/EditArticle';
+import * as EditArticleActions from '../actions/editArticle';
 
 const mapStateToProps = ({
   editArticle: {

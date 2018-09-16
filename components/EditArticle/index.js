@@ -85,6 +85,7 @@ class CreateArticlagePage extends Component {
 
   render() {
     const {
+      articleId,
       saveArticle,
       typingNewTitle,
       typingNewUrl,
@@ -102,7 +103,19 @@ class CreateArticlagePage extends Component {
       <main id="create-article">
         <div className="edit-section">
           <div className="edit-section-submit">
-            <button className="btn create-btn" type="submit" onClick={event => saveArticle(event, { currentContent: tempContent, ...typingValues })}>Save</button>
+            <button
+              type="submit"
+              className="btn create-btn"
+              onClick={
+                event => saveArticle(event, {
+                  articleId,
+                  ...typingValues,
+                  currentContent: tempContent,
+                })
+              }
+            >
+              Save
+            </button>
             <button className="btn reset-btn" type="button" onClick={this.reset}>Reset</button>
           </div>
           <div className="edit-section-options">
@@ -161,6 +174,7 @@ class CreateArticlagePage extends Component {
 }
 
 CreateArticlagePage.defaultProps = {
+  articleId: '',
   url: '',
   title: '',
   content: '',
@@ -171,6 +185,7 @@ CreateArticlagePage.defaultProps = {
 };
 
 CreateArticlagePage.propTypes = {
+  articleId: PropTypes.string,
   url: PropTypes.string,
   title: PropTypes.string,
   content: PropTypes.string,

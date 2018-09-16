@@ -25,8 +25,8 @@ class MyApp extends App {
   componentDidMount() {
     const { router } = this.props;
     const token = localStorage.getItem('blog-admin-token');
-    if (!token && router.pathname === '/admin') {
-      Router.push('/');
+    if (!token && (router.pathname === '/admin' || router.pathname === '/create')) {
+      Router.replace('/');
     }
   }
 
