@@ -25,7 +25,7 @@ Label.propTypes = {
   name: PropTypes.string.isRequired,
   tagNames: PropTypes.array.isRequired,
   removeItem: PropTypes.func.isRequired,
-  itemIndex: PropTypes.string.isRequired,
+  itemIndex: PropTypes.number.isRequired,
 };
 
 export default Label;
