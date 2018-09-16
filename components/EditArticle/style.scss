@@ -1,0 +1,64 @@
+#create-article {
+  height: 100%;
+  display: flex;
+  padding: 5px 30px 5px;
+  box-sizing: border-box;
+  flex-direction: column;
+
+  .edit-section {
+    width: 100%;
+    height: 100%;
+
+    .edit-section-submit {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .edit-section-options {
+      display: flex;
+      flex-direction: column;
+
+      #create-tag-form {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .input-group {
+        margin: 10px 0;
+      }
+    }
+
+    .edit-section-content-section {
+      display: flex;
+      margin: 15px 0;
+      height: calc(100% - 185px);
+      flex-direction: row;
+      align-items: stretch;
+
+      .edit-section-content-section-block {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border: 3px solid black;
+    
+        &.content-edit {
+          border-top-left-radius: 1em;
+          border-bottom-left-radius: 1em;
+        }
+        &.content-preview {
+          border-top-right-radius: 1em;
+          border-bottom-right-radius: 1em;
+        }
+    
+        .content-wrapper {
+          height: 100%;
+          outline: none;
+          padding: 10px;
+          overflow: auto;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+}

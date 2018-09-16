@@ -1,0 +1,25 @@
+{
+  "useBR": true,
+  "tabReplace": "  ",
+  "classPrefix": "hljs-",
+  "languages": [
+    "Bash",
+    "C++",
+    "C#",
+    "CSS",
+    "Diff",
+    "HTTP",
+    "JavaScript",
+    "JSON",
+    "Makefile",
+    "Markdown",
+    "Nginx",
+    "Python",
+    "Shell Session",
+    "SQL",
+    "HTML",
+    "Dockerfile",
+    "YAML",
+    "SCSS"
+  ]
+}

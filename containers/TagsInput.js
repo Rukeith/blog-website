@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import TagsInput from '../components/AdminPage/TagsInput';
+import TagsInput from '../components/TagsInput';
 import * as TagsInputActions from '../actions/tagsInput';
 
 const mapStateToProps = ({ tagsInput: { tagNames, typingName } }) => ({

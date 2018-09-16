@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   Tab,
   Tabs,
@@ -20,6 +21,9 @@ export default () => (
       </TabList>
 
       <TabPanel>
+        <Link prefetch href="/create">
+          <button className="btn create-btn" type="button">Create Article</button>
+        </Link>
         <TableView viewType="article" />
       </TabPanel>
       <TabPanel>

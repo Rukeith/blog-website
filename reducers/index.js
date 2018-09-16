@@ -8,6 +8,7 @@ import tableView from './tableView';
 import articleArea from './articleArea';
 import commentForm from './commentForm';
 import commentList from './commentList';
+import editArticle from './editArticle';
 
 const rootReducer = combineReducers({
   login,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   articleArea,
   commentForm,
   commentList,
+  editArticle,
 });
 
 export default rootReducer;

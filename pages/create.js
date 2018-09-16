@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../containers/Header';
-import MyApp from '../containers/LoginPage';
+import MyApp from '../containers/EditArticle';
 import '../static/styles.scss';
 import '../static/animate.min.scss';
 
@@ -28,7 +28,7 @@ const App = ({ title }) => (
 );
 
 App.defaultProps = {
-  title: 'Admin login',
+  title: 'Create new article',
 };
 
 App.propTypes = {
