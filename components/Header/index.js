@@ -43,10 +43,10 @@ class Header extends Component {
           </Link>
         </div>
         <SearchInput />
-        <NavItem path="/intro" title="Intro" />
-        <NavItem path="/" title="Blog" />
-        { token && <NavItem path="/admin" title="Admin Page" /> }
-        { token ? (<NavItem path="/logout" title="Logout" />) : (<NavItem path="/login" title="Login" />) }
+        <NavItem key="intro" path="/intro" title="Intro" />
+        <NavItem key="blog" path="/" title="Blog" />
+        { token && <NavItem key="admin" path="/admin" title="Admin Page" /> }
+        { token ? (<NavItem key="logout" path="/logout" title="Logout" />) : (<NavItem key="login" path="/login" title="Login" />) }
       </header>
     );
   }
