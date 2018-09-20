@@ -1,4 +1,12 @@
+import marked from 'marked';
+import hljs from 'highlight.js';
+import hightlightConfig from '../config/hightlight.json';
 import axios from '../lib/axios';
+
+hljs.configure(hightlightConfig);
+marked.setOptions({
+  highlight: code => hljs.highlightAuto(code).value,
+});
 
 export const GET_ARTICLES_CARD = 'GET_ARTICLES_CARD';
 
@@ -15,13 +23,17 @@ export const getArticles = () => async (dispatch) => {
 
   const articles = data.map(({
     id, url, title, begins, coverImages,
-  }) => ({
-    id,
-    title,
-    begins,
-    url: `/articles/${url}`,
-    coverImage: coverImages[0],
-  }));
+  }) => {
+    const formatBegins = marked(begins);
+
+    return {
+      id,
+      title,
+      begins: formatBegins,
+      url: `/articles/${url}`,
+      coverImage: coverImages[0],
+    };
+  });
 
   articles.push({
     id: 0,

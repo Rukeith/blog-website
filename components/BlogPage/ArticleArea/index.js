@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ArticleCard from '../../ArticleCard';
 import './style.scss';
 
-// const ArticleArea = ({ articles }) => ;
 class ArticleArea extends Component {
   async componentDidMount() {
     const { getArticles } = this.props;

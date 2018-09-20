@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+import marked from 'marked';
 import Head from 'next/head';
+import hljs from 'highlight.js';
 import PropTypes from 'prop-types';
 import axios from '../lib/axios';
 import Header from '../containers/Header';
 import MyApp from '../containers/ArticlePage';
+import hightlightConfig from '../config/hightlight.json';
 import '../static/styles.scss';
 import '../static/animate.min.scss';
+
+hljs.configure(hightlightConfig);
+marked.setOptions({
+  highlight: code => hljs.highlightAuto(code).value,
+});
 
 class App extends Component {
   static async getInitialProps({ query: { articleUrl } }) {
@@ -26,13 +34,15 @@ class App extends Component {
       },
     });
 
+    const formatContent = marked(content);
+
     return {
       article: {
         id,
         url,
         title,
-        content,
         publishedAt,
+        content: formatContent,
         breadcrumb: category.split('>'),
       },
     };
