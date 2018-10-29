@@ -6,19 +6,20 @@ services:
     container_name: blog-website
     labels:
       - "PROJECT=blog"
-      - "STATUS=docker"
+      - "SERVICE=website"
     networks:
       - blog-network
     ports:
       - "3000:3000"
     environment:
-      - API_ENTRY=$API_ENTRY
-      - NODE_ENV=development
-      - START_COMMAND=dev
+      - PORT=3000
+      - NODE_ENV=production
+      - START_COMMAND=start
+      - API_ENTRY=https://blog-server
 
 networks:
   blog-network:
+    name: blog-network
     labels:
       - "PROJECT=blog"
-      - "STATUS=docker"
-    name: blog-network
+      - "SERVICE=website"
