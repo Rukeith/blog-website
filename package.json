@@ -29,7 +29,7 @@
     "koa-router": "^8.0.0-alpha.1",
     "luxon": "^1.4.4",
     "marked": "^0.5.1",
-    "next": "^7.0.2",
+    "next": "^7.0.3-alpha.0",
     "next-redux-wrapper": "^2.0.0",
     "node-sass": "^4.9.4",
     "prop-types": "^15.6.2",
