@@ -27,7 +27,7 @@
     "highlight.js": "^9.13.1",
     "koa": "^2.6.1",
     "koa-router": "^8.0.0-alpha.1",
-    "luxon": "^1.4.5",
+    "luxon": "^1.5.0",
     "marked": "^0.5.1",
     "next": "^7.0.3-alpha.5",
     "next-redux-wrapper": "^2.0.0",
