@@ -24,12 +24,12 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@zeit/next-sass": "^1.0.2-canary.2",
     "axios": "^0.19.0-beta.1",
-    "highlight.js": "^9.14.2",
+    "highlight.js": "^9.15.2",
     "koa": "^2.7.0",
     "koa-router": "^8.0.0-alpha.1",
     "luxon": "^1.11.3",
     "marked": "^0.6.1",
-    "next": "^8.0.3",
+    "next": "^8.0.4-canary.1",
     "next-redux-wrapper": "^3.0.0-alpha.1",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
@@ -57,5 +57,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.1.0"
+  },
+  "peerDependencies": {
+    "preact": "^8.4.2",
+    "webpack": "^4.29.5"
   }
 }
