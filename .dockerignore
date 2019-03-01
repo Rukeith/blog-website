@@ -2,6 +2,10 @@
 node_modules
 LICENSE
 README.md
-yarn-error.log
-yarn.lock
+*.log
 .vscode
+.git
+.next
+.eslintrc
+docker-compose.yml
+Procfile

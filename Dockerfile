@@ -1,4 +1,4 @@
-FROM node
+FROM node:alpine
 LABEL PROJECT="blog" \
       SERVICE="website"
 ENV PORT=80 \
