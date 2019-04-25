@@ -29,14 +29,14 @@
     "koa-router": "^8.0.0-alpha.1",
     "luxon": "^1.12.1",
     "marked": "^0.6.2",
-    "next": "^8.0.5-canary.34",
+    "next": "^8.1.1-canary.13",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0-alpha.0",
     "react-dom": "^16.9.0-alpha.0",
-    "react-redux": "^7.0.2",
-    "react-table": "^6.9.2",
+    "react-redux": "^7.1.0-alpha.1",
+    "react-table": "^6.10.0",
     "react-tabs": "^3.0.0",
     "redux": "^4.0.1",
     "redux-logger": "^4.0.0",
@@ -53,13 +53,13 @@
     "eslint": "^6.0.0-alpha.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-loader": "^2.1.2",
-    "eslint-plugin-import": "^2.17.1",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.7.1"
   },
   "peerDependencies": {
-    "preact": "^10.0.0-alpha.4",
+    "preact": "^10.0.0-beta.0",
     "webpack": "^4.30.0"
   }
 }
