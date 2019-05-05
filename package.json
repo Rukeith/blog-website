@@ -27,9 +27,9 @@
     "highlight.js": "^9.15.6",
     "koa": "^2.7.0",
     "koa-router": "^8.0.0-alpha.1",
-    "luxon": "^1.12.1",
+    "luxon": "^1.13.0",
     "marked": "^0.6.2",
-    "next": "^8.1.1-canary.19",
+    "next": "^8.1.1-canary.24",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/parser": "^7.4.4",
-    "babel-jest": "^24.7.1",
+    "babel-jest": "^24.8.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^7.0.0-beta.3",
     "enzyme": "^3.9.0",
@@ -55,11 +55,11 @@
     "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
-    "jest": "^24.7.1"
+    "eslint-plugin-react": "^7.13.0",
+    "jest": "^24.8.0"
   },
   "peerDependencies": {
-    "preact": "^10.0.0-beta.0",
+    "preact": "^10.0.0-beta.1",
     "webpack": "^4.30.0"
   }
 }
